@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:docs.umbraco.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:leehanchung.github.io)",
+      "WebFetch(domain:helix.sitecore.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}

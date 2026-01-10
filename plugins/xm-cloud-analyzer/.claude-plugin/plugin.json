@@ -1,0 +1,25 @@
+{
+  "name": "xm-cloud-analyzer",
+  "version": "1.1.0",
+  "description": "Analyze XM Cloud projects for JSS patterns, GraphQL efficiency, and Next.js best practices",
+  "commands": [
+    "commands/analyze.md",
+    "commands/enhance.md",
+    "commands/security-scan.md",
+    "commands/setup.md"
+  ],
+  "agents": [
+    "agents/detector.md",
+    "agents/architecture.md",
+    "agents/code-quality.md",
+    "agents/security.md",
+    "agents/performance.md",
+    "agents/graphql.md",
+    "agents/dependencies.md",
+    "agents/conventions.md",
+    "agents/pattern-extractor.md",
+    "agents/skill-generator.md"
+  ],
+  "skills": ["skills/xm-cloud"],
+  "templates": ["templates/.claudeignore.template"]
+}

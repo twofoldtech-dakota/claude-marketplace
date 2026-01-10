@@ -1,0 +1,28 @@
+{
+  "name": "cms-analyzers-marketplace",
+  "version": "1.0.0",
+  "description": "Claude Code plugins for analyzing enterprise CMS platforms with actionable reports",
+  "plugins": [
+    {
+      "name": "sitecore-classic-analyzer",
+      "source": "./plugins/sitecore-classic-analyzer",
+      "description": "Sitecore 10.x analyzer for Helix compliance, serialization, and C# patterns",
+      "category": "cms",
+      "tags": ["sitecore", "helix", "dotnet", "mvc", "solr"]
+    },
+    {
+      "name": "xm-cloud-analyzer",
+      "source": "./plugins/xm-cloud-analyzer",
+      "description": "XM Cloud analyzer for JSS, Next.js, GraphQL, and headless patterns",
+      "category": "cms",
+      "tags": ["sitecore", "xm-cloud", "jss", "nextjs", "graphql", "typescript"]
+    },
+    {
+      "name": "umbraco-analyzer",
+      "source": "./plugins/umbraco-analyzer",
+      "description": "Umbraco 14-16 analyzer for backoffice, Content Delivery API, and architecture",
+      "category": "cms",
+      "tags": ["umbraco", "dotnet", "aspnet-core", "lit", "typescript"]
+    }
+  ]
+}

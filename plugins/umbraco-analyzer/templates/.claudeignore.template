@@ -1,0 +1,132 @@
+# ===========================================
+# Umbraco Analyzer - .claudeignore
+# Template for Umbraco 14-16 Projects
+# ===========================================
+# Copy this file to your project root as `.claudeignore`
+# Customize as needed for your specific project
+
+# -----------------
+# CRITICAL: Configuration with Credentials
+# -----------------
+
+# Environment-specific settings (contain connection strings, API keys)
+appsettings.*.json
+!appsettings.json
+
+# Explicitly exclude production/staging
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.Development.json
+appsettings.Local.json
+
+# User secrets
+secrets.json
+**/.microsoft/usersecrets/**
+
+# -----------------
+# HIGH: Umbraco Data
+# -----------------
+
+# Umbraco SQLite database
+umbraco/Data/
+umbraco/Data/**
+
+# Umbraco logs (may contain PII)
+umbraco/Logs/
+umbraco/Logs/**
+
+# Legacy App_Data
+App_Data/
+App_Data/**
+
+# -----------------
+# HIGH: Certificates & Keys
+# -----------------
+
+# Certificate files
+**/*.pfx
+**/*.p12
+**/*.key
+**/*.pem
+**/*.cer
+
+# Secret directories
+**/secrets/
+**/credentials/
+
+# -----------------
+# MEDIUM: Media & User Content
+# -----------------
+
+# User-uploaded media
+wwwroot/media/
+wwwroot/media/**
+
+# Upload directories
+uploads/
+uploads/**
+
+# -----------------
+# Build Output (Reduce Noise)
+# -----------------
+
+# .NET build
+bin/
+obj/
+
+# NuGet
+packages/
+
+# -----------------
+# IDE & Editor Settings
+# -----------------
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# JetBrains
+.idea/
+
+# VS Code (optional - uncomment if needed)
+# .vscode/
+
+# Launch settings (contains local URLs)
+Properties/launchSettings.json
+
+# -----------------
+# Temporary & Cache
+# -----------------
+
+# Umbraco temp
+umbraco/TemporaryFileUploads/
+
+# ASP.NET Core
+*.tmp
+*.temp
+
+# -----------------
+# Backoffice Extensions (v14+)
+# -----------------
+
+# Built/compiled extensions (source is fine)
+**/App_Plugins/**/dist/
+**/App_Plugins/**/node_modules/
+
+# -----------------
+# Testing
+# -----------------
+
+# Test results (may contain file contents)
+TestResults/
+coverage/
+
+# -----------------
+# Custom Exclusions
+# -----------------
+
+# Add your project-specific exclusions below:
+# Example: **/internal/**

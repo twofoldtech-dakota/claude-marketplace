@@ -1,0 +1,137 @@
+# ===========================================
+# XM Cloud Analyzer - .claudeignore
+# Template for XM Cloud / JSS Projects
+# ===========================================
+# Copy this file to your project root as `.claudeignore`
+# Customize as needed for your specific project
+
+# -----------------
+# CRITICAL: Environment Files
+# -----------------
+
+# All environment files (contain API keys)
+.env
+.env.local
+.env.development
+.env.development.local
+.env.production
+.env.production.local
+.env.test
+.env.test.local
+
+# Keep example/template files
+!.env.example
+!.env.template
+!.env.sample
+
+# -----------------
+# CRITICAL: API Keys & Secrets
+# -----------------
+
+# Certificate and key files
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.cer
+
+# Secret directories
+**/secrets/
+**/credentials/
+**/.secrets/
+
+# -----------------
+# HIGH: Deployment Configurations
+# -----------------
+
+# Vercel
+vercel.json
+.vercel/
+.vercel/**
+
+# Netlify
+netlify.toml
+.netlify/
+.netlify/**
+
+# AWS
+.aws/
+aws-exports.js
+
+# Azure
+.azure/
+
+# -----------------
+# MEDIUM: Build Output
+# -----------------
+
+# Next.js build
+.next/
+out/
+
+# Generic build
+build/
+dist/
+
+# Dependencies
+node_modules/
+
+# -----------------
+# IDE & Editor Settings
+# -----------------
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains
+.idea/
+
+# Local overrides
+*.local
+
+# -----------------
+# Cache & Logs
+# -----------------
+
+# Next.js cache
+.cache/
+
+# Turborepo
+.turbo/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -----------------
+# Testing
+# -----------------
+
+# Coverage reports (may contain file contents)
+coverage/
+.nyc_output/
+
+# -----------------
+# GraphQL Codegen (Safe - but large)
+# -----------------
+
+# Uncomment if you want to exclude generated types
+# **/generated/**
+# **/*.generated.ts
+
+# -----------------
+# Sitecore-Specific
+# -----------------
+
+# XM Cloud build artifacts
+.sitecore/
+
+# -----------------
+# Custom Exclusions
+# -----------------
+
+# Add your project-specific exclusions below:
+# Example: **/internal-api/**

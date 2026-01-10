@@ -1,0 +1,129 @@
+# ===========================================
+# Sitecore Classic Analyzer - .claudeignore
+# Template for Sitecore 10.x Projects
+# ===========================================
+# Copy this file to your project root as `.claudeignore`
+# Customize as needed for your specific project
+
+# -----------------
+# CRITICAL: Credentials & Secrets
+# -----------------
+
+# Connection strings with database credentials
+**/App_Config/ConnectionStrings.config
+
+# Secret configuration files
+**/App_Config/Include/*.secret.config
+**/App_Config/Include/**/*.secret.config
+
+# Security configuration
+**/App_Config/Security/*
+**/App_Config/Include/Security/*
+
+# Web.config transforms (may contain credentials)
+**/web.config.transform
+**/Web.*.config
+
+# Certificates and keys
+**/*.pfx
+**/*.p12
+**/*.key
+**/*.pem
+**/*.cer
+
+# -----------------
+# HIGH: Sensitive Configuration
+# -----------------
+
+# Sitecore license
+**/license.xml
+**/App_Data/license.xml
+
+# Azure/deployment credentials
+**/publishsettings.xml
+**/*.publishsettings
+
+# Local development settings
+**/Properties/launchSettings.json
+
+# -----------------
+# MEDIUM: Serialization with Sensitive Data
+# -----------------
+
+# User accounts (contain hashed passwords)
+**/serialization/**/Security/Users/**
+**/serialization/**/System/Security/Accounts/**
+
+# Role definitions (may contain sensitive assignments)
+**/serialization/**/Security/Roles/**
+
+# System settings (may contain API keys)
+**/serialization/**/System/Settings/**
+
+# Allow module configuration files
+!**/serialization/**/*.module.json
+
+# -----------------
+# Environment Files
+# -----------------
+
+# Environment variables
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.*
+
+# Keep example files
+!**/.env.example
+!**/.env.template
+
+# -----------------
+# Build Artifacts (Reduce Noise)
+# -----------------
+
+# .NET build output
+**/bin/
+**/obj/
+
+# NuGet packages
+**/packages/
+
+# Node modules (if using frontend build)
+**/node_modules/
+
+# Visual Studio
+**/.vs/
+**/*.user
+**/*.suo
+
+# -----------------
+# Logs & Temporary Files
+# -----------------
+
+# Sitecore logs
+**/App_Data/logs/
+**/App_Data/diagnostics/
+
+# Temporary files
+**/temp/
+**/tmp/
+**/*.log
+**/*.tmp
+
+# -----------------
+# IDE & Editor Settings
+# -----------------
+
+# JetBrains
+**/.idea/
+
+# VS Code (optional - uncomment if needed)
+# **/.vscode/
+
+# -----------------
+# Custom Exclusions
+# -----------------
+
+# Add your project-specific exclusions below:
+# Example: **/MyModule/Secrets/**
