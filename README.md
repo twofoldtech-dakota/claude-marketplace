@@ -2,6 +2,24 @@
 
 Claude Code plugins for analyzing enterprise CMS platforms with actionable reports, severity ratings, and shareable metrics.
 
+## Why Use This
+
+| Challenge | How This Helps |
+|-----------|----------------|
+| "Is this code following best practices?" | Automated analysis with specific issue locations and fix recommendations |
+| "Are there security vulnerabilities?" | Scans for hardcoded credentials, API key exposure, and misconfigurations |
+| "What's causing performance issues?" | Identifies slow queries, missing cache settings, and inefficient patterns |
+| "How do I onboard to this codebase?" | Generate project-specific skills that teach Claude your patterns |
+| "Can we catch issues before PR merge?" | CI/CD ready with exit codes for critical issues |
+
+## Benefits
+
+- **Platform-Specific**: Separate analyzers optimized for each CMS (not one-size-fits-all)
+- **Actionable Reports**: Every issue includes severity, location, and how to fix it
+- **Safe by Default**: Preview what will be analyzed, exclude sensitive files with `.claudeignore`
+- **AI Enhancement**: Generate skills that improve Claude's understanding of your codebase
+- **Team Scalable**: Consistent analysis across developers, integrates with CI/CD pipelines
+
 ## Quick Start
 
 ### Step 1: Add the Marketplace

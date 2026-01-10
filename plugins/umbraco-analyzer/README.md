@@ -2,10 +2,29 @@
 
 Analyze Umbraco 14-16 projects for architecture, security, backoffice patterns, and Content Delivery API configuration.
 
+## Why Use This
+
+| Challenge | How This Helps |
+|-----------|----------------|
+| "Is my Content Delivery API secure?" | Checks authentication, public access, and API key requirements |
+| "Are my Composers well-structured?" | Detects oversized Composers, circular dependencies, Service Locator anti-pattern |
+| "Am I using v14+ patterns correctly?" | Validates Lit components, checks for deprecated AngularJS code |
+| "Is my caching optimal?" | Recommends HybridCache (v15+), identifies IUmbracoContext misuse |
+| "Are my property editors correct?" | Checks manifest registration, TypeScript quality, UUI component usage |
+
+## Benefits
+
+- **Version-Aware**: Different checks for Umbraco 14, 15, and 16 features
+- **Modern Backoffice**: Validates Lit components and TypeScript patterns
+- **API Security**: Content Delivery API and Management API configuration checks
+- **Performance Tuning**: Caching, Examine indexes, content traversal optimization
+- **Project Learning**: Generate custom skills so Claude understands your Composer patterns
+
 ## Installation
 
-```bash
-claude mcp add /path/to/marketplace
+```
+/plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
+/plugin install umbraco-analyzer@cms-analyzers-marketplace
 ```
 
 ## Commands

@@ -2,10 +2,29 @@
 
 Analyze Sitecore XM Cloud projects for JSS patterns, GraphQL efficiency, and Next.js best practices.
 
+## Why Use This
+
+| Challenge | How This Helps |
+|-----------|----------------|
+| "Is my GraphQL efficient?" | Detects N+1 patterns, over-fetching, and missing fragments |
+| "Are API keys exposed?" | Finds NEXT_PUBLIC_ misuse and hardcoded credentials |
+| "Is SSR/SSG optimal?" | Identifies static content using getServerSideProps unnecessarily |
+| "Does my TypeScript follow best practices?" | Catches `any` overuse, missing type guards, and JSS pattern violations |
+| "Is my bundle size reasonable?" | Flags large imports and missing code splitting |
+
+## Benefits
+
+- **Headless-Focused**: Built specifically for JSS, Next.js, and GraphQL patterns
+- **TypeScript Quality**: Analyzes type safety and React best practices
+- **Performance Insights**: SSR vs SSG recommendations, bundle optimization
+- **Security Scanning**: API key exposure, environment variable leaks
+- **Project Learning**: Generate custom skills so Claude understands your component patterns
+
 ## Installation
 
-```bash
-claude mcp add /path/to/marketplace
+```
+/plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
+/plugin install xm-cloud-analyzer@cms-analyzers-marketplace
 ```
 
 ## Commands

@@ -2,10 +2,29 @@
 
 Analyze Sitecore 10.x projects for Helix compliance, security vulnerabilities, and performance issues.
 
+## Why Use This
+
+| Challenge | How This Helps |
+|-----------|----------------|
+| "Is this code Helix compliant?" | Automated architecture validation with specific violation locations |
+| "Are there security issues?" | Scans for hardcoded credentials, XSS risks, and misconfigurations |
+| "Why is this page slow?" | Identifies Sitecore.Query in loops, unbounded GetDescendants, missing cache settings |
+| "Are our serialization files correct?" | Detects SCS/Unicorn conflicts, overlapping paths, slow queries in field values |
+| "Does our code follow best practices?" | Checks DI patterns, controller complexity, and naming conventions |
+
+## Benefits
+
+- **Actionable Reports**: Every issue includes location, impact, and fix recommendation
+- **Severity Ratings**: Critical, Warning, Info levels help prioritize fixes
+- **CI/CD Ready**: Integrate into PR pipelines to catch issues before merge
+- **Safe Mode**: Analyze structure without reading sensitive file contents
+- **Project Learning**: Generate custom skills so Claude understands your patterns
+
 ## Installation
 
-```bash
-claude mcp add /path/to/marketplace
+```
+/plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
+/plugin install sitecore-classic-analyzer@cms-analyzers-marketplace
 ```
 
 ## Commands
