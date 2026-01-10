@@ -1,29 +1,5 @@
 {
   "name": "umbraco-analyzer",
   "version": "1.1.0",
-  "description": "Analyze Umbraco 14-16 projects for architecture, security, and backoffice patterns",
-  "commands": [
-    "commands/analyze.md",
-    "commands/enhance.md",
-    "commands/security-scan.md",
-    "commands/setup.md"
-  ],
-  "agents": [
-    "agents/detector.md",
-    "agents/architecture.md",
-    "agents/code-quality.md",
-    "agents/security.md",
-    "agents/performance.md",
-    "agents/backoffice.md",
-    "agents/api.md",
-    "agents/dependencies.md",
-    "agents/conventions.md",
-    "agents/pattern-extractor.md",
-    "agents/skill-generator.md"
-  ],
-  "skills": [
-    "skills/umbraco-development",
-    "skills/umbraco-modern-guide"
-  ],
-  "templates": ["templates/.claudeignore.template"]
+  "description": "Analyze Umbraco 14-16 projects for architecture, security, and backoffice patterns"
 }

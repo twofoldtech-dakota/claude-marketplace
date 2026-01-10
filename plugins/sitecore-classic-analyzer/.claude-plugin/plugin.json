@@ -1,25 +1,5 @@
 {
   "name": "sitecore-classic-analyzer",
   "version": "1.1.0",
-  "description": "Analyze Sitecore 10.x projects for Helix compliance, security, and performance",
-  "commands": [
-    "commands/analyze.md",
-    "commands/enhance.md",
-    "commands/security-scan.md",
-    "commands/setup.md"
-  ],
-  "agents": [
-    "agents/detector.md",
-    "agents/architecture.md",
-    "agents/code-quality.md",
-    "agents/security.md",
-    "agents/performance.md",
-    "agents/serialization.md",
-    "agents/dependencies.md",
-    "agents/conventions.md",
-    "agents/pattern-extractor.md",
-    "agents/skill-generator.md"
-  ],
-  "skills": ["skills/sitecore-classic"],
-  "templates": ["templates/.claudeignore.template"]
+  "description": "Analyze Sitecore 10.x projects for Helix compliance, security, and performance"
 }
