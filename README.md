@@ -54,6 +54,19 @@ Choose the plugin for your CMS platform:
 /umbraco:enhance
 ```
 
+### Troubleshooting
+
+**"Invalid schema" error on first attempt?**
+
+This is a known intermittent issue in Claude Code v2.1.2. Simply retry the command - it typically works on the second or third attempt.
+
+| Attempt | Result |
+|---------|--------|
+| 1st | ❌ Error: Invalid schema |
+| 2nd/3rd | ✅ Successfully added |
+
+This appears to be a race condition in the CLI where the marketplace schema parser isn't fully initialized on the first invocation.
+
 ## Available Plugins
 
 | Plugin | CMS Versions | Key Features |
