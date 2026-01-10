@@ -4,32 +4,55 @@ Claude Code plugins for analyzing enterprise CMS platforms with actionable repor
 
 ## Quick Start
 
-```bash
-# Step 1: Add the marketplace
+### Step 1: Add the Marketplace
+
+```
 /plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
-# Or from local path:
-/plugin marketplace add /path/to/marketplace
+```
 
-# Step 2: Install individual plugins from the marketplace
+### Step 2: Install a Plugin
+
+Choose the plugin for your CMS platform:
+
+**For Sitecore 10.x:**
+```
 /plugin install sitecore-classic-analyzer@cms-analyzers-marketplace
+```
+
+**For XM Cloud:**
+```
 /plugin install xm-cloud-analyzer@cms-analyzers-marketplace
+```
+
+**For Umbraco 14-16:**
+```
 /plugin install umbraco-analyzer@cms-analyzers-marketplace
+```
 
-# Or install all plugins at once (if supported)
-/plugin install @cms-analyzers-marketplace
+### Step 3: Run Analysis
 
-# Run analysis
-/sitecore-classic:analyze    # For Sitecore 10.x
-/xm-cloud:analyze            # For XM Cloud
-/umbraco:analyze             # For Umbraco 14-16
+**Sitecore 10.x:**
+```
+/sitecore-classic:analyze
+```
 
-# Generate project-specific AI enhancements
-/sitecore-classic:enhance    # Learn project patterns
+**XM Cloud:**
+```
+/xm-cloud:analyze
+```
+
+**Umbraco:**
+```
+/umbraco:analyze
+```
+
+### Optional: Generate Project-Specific Enhancements
+
+```
+/sitecore-classic:enhance
 /xm-cloud:enhance
 /umbraco:enhance
 ```
-
-**Note**: The marketplace name is `cms-analyzers-marketplace` (from `marketplace.json`). Use `/plugin marketplace add` to add the marketplace, then `/plugin install` to install specific plugins.
 
 ## Available Plugins
 
@@ -92,22 +115,28 @@ Analyzers can be installed safely without exposing sensitive code:
 
 ### Safe Installation Workflow
 
-```bash
-# Step 1: Add marketplace (no analysis yet)
+**Step 1:** Add the marketplace (no analysis yet)
+```
 /plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
-# Or from local path:
-/plugin marketplace add /path/to/marketplace
+```
 
-# Step 1b: Install the plugin
+**Step 2:** Install the plugin
+```
 /plugin install sitecore-classic-analyzer@cms-analyzers-marketplace
+```
 
-# Step 2: Generate .claudeignore for your project
+**Step 3:** Generate `.claudeignore` for your project
+```
 /sitecore-classic:setup --generate-ignore
+```
 
-# Step 3: Preview what will be analyzed
+**Step 4:** Preview what will be analyzed
+```
 /sitecore-classic:security-scan
+```
 
-# Step 4: Run analysis with exclusions in place
+**Step 5:** Run analysis with exclusions in place
+```
 /sitecore-classic:analyze
 ```
 
