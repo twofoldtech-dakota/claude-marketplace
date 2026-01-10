@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Claude Code plugins for analyzing enterprise CMS platforms with actionable reports",
   "owner": {
-    "name": "Twofold Tech",
+    "name": "Dakota Smith",
     "url": "https://github.com/twofoldtech-dakota"
   },
   "plugins": [
