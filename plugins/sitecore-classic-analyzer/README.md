@@ -32,7 +32,7 @@ Analyze Sitecore 10.x projects for Helix compliance, security vulnerabilities, a
 ### Analyze
 
 ```bash
-# Run all agents
+# Run all agents (saves to docs/sitecore-classic-analysis-{date}.md)
 /sitecore-classic:analyze
 
 # Run specific agent
@@ -41,9 +41,17 @@ Analyze Sitecore 10.x projects for Helix compliance, security vulnerabilities, a
 /sitecore-classic:analyze performance
 /sitecore-classic:analyze serialization
 
+# Custom output path
+/sitecore-classic:analyze --output ./reports/latest.md
+
+# Display only, no file output
+/sitecore-classic:analyze --no-file
+
 # Safe mode (structure only, no file content)
 /sitecore-classic:analyze --safe-mode
 ```
+
+**Report Output**: By default, reports are saved to `docs/sitecore-classic-analysis-{date}.md`. Use `--output` for custom paths or `--no-file` to skip file output.
 
 ### Enhance
 

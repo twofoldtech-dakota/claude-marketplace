@@ -95,7 +95,7 @@ This appears to be a race condition in the CLI where the marketplace schema pars
 
 ## Commands Overview
 
-Each plugin provides three main commands:
+Each plugin provides these main commands:
 
 | Command | Purpose |
 |---------|---------|
@@ -103,6 +103,27 @@ Each plugin provides three main commands:
 | `/{plugin}:enhance` | Generate project-specific skills and custom commands |
 | `/{plugin}:security-scan` | Preview what will be analyzed before running |
 | `/{plugin}:setup` | Initial setup with `.claudeignore` generation |
+
+### Report Output Options
+
+By default, analysis reports are saved to `docs/{plugin}-analysis-{date}.md`.
+
+| Option | Description |
+|--------|-------------|
+| (default) | Write report to `docs/` directory |
+| `--output <path>` | Custom output path |
+| `--no-file` | Display report only, don't save to file |
+
+```bash
+# Default: saves to docs/sitecore-classic-analysis-2026-01-11.md
+/sitecore-classic:analyze
+
+# Custom output path
+/sitecore-classic:analyze --output ./reports/latest.md
+
+# Display only
+/sitecore-classic:analyze --no-file
+```
 
 ## Why Three Separate Analyzers?
 
@@ -243,8 +264,30 @@ Add to your PR pipeline:
 ```yaml
 - name: CMS Analysis
   run: |
-    claude /sitecore-classic:analyze all --output report.md
+    claude /sitecore-classic:analyze --output report.md
     grep -q "Critical" report.md && exit 1 || exit 0
+
+- name: Upload Analysis Report
+  uses: actions/upload-artifact@v3
+  if: always()
+  with:
+    name: analysis-report
+    path: report.md
+```
+
+### Pipeline Options
+
+```yaml
+# Fail on critical issues
+claude /sitecore-classic:analyze --output report.md
+grep -q "Critical" report.md && exit 1
+
+# Save reports by date (for tracking over time)
+claude /sitecore-classic:analyze --output reports/analysis-$(date +%Y-%m-%d).md
+
+# Multiple analyzers in one pipeline
+claude /sitecore-classic:analyze --output reports/sitecore.md
+claude /umbraco:analyze --output reports/umbraco.md
 ```
 
 ## Plugin Structure

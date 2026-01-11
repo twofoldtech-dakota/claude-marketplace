@@ -32,7 +32,7 @@ Analyze Umbraco 14-16 projects for architecture, security, backoffice patterns, 
 ### Analyze
 
 ```bash
-# Run all agents
+# Run all agents (saves to docs/umbraco-analysis-{date}.md)
 /umbraco:analyze
 
 # Run specific agent
@@ -41,9 +41,17 @@ Analyze Umbraco 14-16 projects for architecture, security, backoffice patterns, 
 /umbraco:analyze backoffice
 /umbraco:analyze performance
 
+# Custom output path
+/umbraco:analyze --output ./reports/latest.md
+
+# Display only, no file output
+/umbraco:analyze --no-file
+
 # Safe mode (structure only, no file content)
 /umbraco:analyze --safe-mode
 ```
+
+**Report Output**: By default, reports are saved to `docs/umbraco-analysis-{date}.md`. Use `--output` for custom paths or `--no-file` to skip file output.
 
 ### Enhance
 

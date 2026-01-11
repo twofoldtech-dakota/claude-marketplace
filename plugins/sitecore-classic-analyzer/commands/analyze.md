@@ -42,6 +42,51 @@ Analyze Sitecore 10.x projects with comprehensive checks for Helix compliance, s
 /sitecore-classic:analyze conventions  # Naming/structure only
 ```
 
+## Report Output
+
+By default, the analysis report is written to a markdown file in the `docs/` directory.
+
+### Output Options
+
+| Option | Description |
+|--------|-------------|
+| (default) | Write to `docs/sitecore-classic-analysis-{date}.md` |
+| `--output <path>` | Custom output path |
+| `--no-file` | Display report only, don't write to file |
+
+### Examples
+
+```bash
+# Default: writes to docs/sitecore-classic-analysis-2026-01-11.md
+/sitecore-classic:analyze
+
+# Custom output path
+/sitecore-classic:analyze --output ./reports/latest.md
+
+# Display only, no file output
+/sitecore-classic:analyze --no-file
+```
+
+### File Output Behavior
+
+When generating the report:
+
+1. Create the output directory if it doesn't exist:
+   ```bash
+   mkdir -p docs
+   ```
+
+2. Generate filename with timestamp:
+   - Format: `sitecore-classic-analysis-YYYY-MM-DD.md`
+   - If file exists, append time: `sitecore-classic-analysis-YYYY-MM-DD-HHmmss.md`
+
+3. Write the full markdown report to the file
+
+4. Display confirmation:
+   ```
+   Report saved to: docs/sitecore-classic-analysis-2026-01-11.md
+   ```
+
 ## Execution Flow
 
 ### Step 1: Detection

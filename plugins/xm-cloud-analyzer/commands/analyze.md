@@ -42,6 +42,51 @@ Analyze Sitecore XM Cloud projects with comprehensive checks for JSS patterns, G
 /xm-cloud:analyze conventions    # Naming/structure only
 ```
 
+## Report Output
+
+By default, the analysis report is written to a markdown file in the `docs/` directory.
+
+### Output Options
+
+| Option | Description |
+|--------|-------------|
+| (default) | Write to `docs/xm-cloud-analysis-{date}.md` |
+| `--output <path>` | Custom output path |
+| `--no-file` | Display report only, don't write to file |
+
+### Examples
+
+```bash
+# Default: writes to docs/xm-cloud-analysis-2026-01-11.md
+/xm-cloud:analyze
+
+# Custom output path
+/xm-cloud:analyze --output ./reports/latest.md
+
+# Display only, no file output
+/xm-cloud:analyze --no-file
+```
+
+### File Output Behavior
+
+When generating the report:
+
+1. Create the output directory if it doesn't exist:
+   ```bash
+   mkdir -p docs
+   ```
+
+2. Generate filename with timestamp:
+   - Format: `xm-cloud-analysis-YYYY-MM-DD.md`
+   - If file exists, append time: `xm-cloud-analysis-YYYY-MM-DD-HHmmss.md`
+
+3. Write the full markdown report to the file
+
+4. Display confirmation:
+   ```
+   Report saved to: docs/xm-cloud-analysis-2026-01-11.md
+   ```
+
 ## Execution Flow
 
 ### Step 1: Detection

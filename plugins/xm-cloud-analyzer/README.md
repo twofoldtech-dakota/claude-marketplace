@@ -32,7 +32,7 @@ Analyze Sitecore XM Cloud projects for JSS patterns, GraphQL efficiency, and Nex
 ### Analyze
 
 ```bash
-# Run all agents
+# Run all agents (saves to docs/xm-cloud-analysis-{date}.md)
 /xm-cloud:analyze
 
 # Run specific agent
@@ -41,9 +41,17 @@ Analyze Sitecore XM Cloud projects for JSS patterns, GraphQL efficiency, and Nex
 /xm-cloud:analyze performance
 /xm-cloud:analyze graphql
 
+# Custom output path
+/xm-cloud:analyze --output ./reports/latest.md
+
+# Display only, no file output
+/xm-cloud:analyze --no-file
+
 # Safe mode (structure only, no file content)
 /xm-cloud:analyze --safe-mode
 ```
+
+**Report Output**: By default, reports are saved to `docs/xm-cloud-analysis-{date}.md`. Use `--output` for custom paths or `--no-file` to skip file output.
 
 ### Enhance
 
