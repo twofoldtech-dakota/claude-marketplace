@@ -142,15 +142,16 @@ By default, analysis reports are saved to `docs/{plugin}-analysis-{date}.md`.
 
 ## Why Three Separate Analyzers?
 
-**Sitecore Classic** (10.x) and **XM Cloud** are fundamentally different platforms:
+Each CMS platform has fundamentally different architectures and patterns:
 
-| Aspect | Sitecore 10.x | XM Cloud |
-|--------|---------------|----------|
-| Primary Language | C# | TypeScript/React |
-| Rendering | MVC Controllers | Next.js Components |
-| Data Access | Content Search, Glass Mapper | GraphQL, Edge |
-| Caching | HTML Cache, Custom Cache | Edge CDN, ISR/SSG |
-| Deployment | IaaS/On-prem | Vercel/Netlify |
+| Aspect | Sitecore 10.x | XM Cloud | Umbraco 14-16 |
+|--------|---------------|----------|---------------|
+| Primary Language | C# | TypeScript/React | C# |
+| Rendering | MVC Controllers | Next.js Components | Razor Views / Headless |
+| Data Access | Content Search, Glass Mapper | GraphQL, Edge | IPublishedContent, Examine |
+| Caching | HTML Cache, Custom Cache | Edge CDN, ISR/SSG | HybridCache, Output Cache |
+| Deployment | IaaS/On-prem | Vercel/Netlify | Azure, Docker, IaaS |
+| Backoffice | SPEAK/Sheer UI | Cloud-hosted | Lit Web Components |
 
 Separate analyzers provide focused, accurate analysis for each platform.
 
