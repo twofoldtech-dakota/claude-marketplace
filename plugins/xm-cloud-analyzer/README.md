@@ -68,7 +68,7 @@ Generate project-specific skills and commands for improved AI assistance:
 /xm-cloud:enhance --include-examples
 ```
 
-**Generated Output** (in `.claude/project-skills/`):
+**Generated Output** (in `.claude/skills/`):
 - `project-patterns/SKILL.md` - Detected component, hook, and data fetching patterns
 - `architecture-guide/SKILL.md` - Next.js structure and adding new components
 - `vocabulary.md` - Domain terms and GraphQL naming conventions
@@ -180,6 +180,17 @@ The `xm-cloud` skill provides Claude with knowledge of:
 - Next.js data fetching strategies
 - Experience Edge delivery
 - Personalization middleware
+
+### Shared Skills
+
+This plugin is enhanced by shared skills that provide additional context for modern frontend and fullstack development:
+
+| Skill | Description |
+|-------|-------------|
+| `frontend-modern` | React/Next.js component patterns, TypeScript, hooks, modern CSS |
+| `fullstack-modern` | GraphQL integration, SSR/SSG patterns, API routes, error handling |
+
+These skills are automatically applied based on the file types you're working with, providing comprehensive development context for modern headless architectures alongside the XM Cloud-specific patterns.
 
 ## Security & Privacy
 

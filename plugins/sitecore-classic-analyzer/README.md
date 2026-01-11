@@ -68,7 +68,7 @@ Generate project-specific skills and commands for improved AI assistance:
 /sitecore-classic:enhance --include-examples
 ```
 
-**Generated Output** (in `.claude/project-skills/`):
+**Generated Output** (in `.claude/skills/`):
 - `project-patterns/SKILL.md` - Detected service, repository, controller patterns
 - `architecture-guide/SKILL.md` - Helix structure and adding new modules
 - `vocabulary.md` - Domain terms and Sitecore-specific naming
@@ -194,6 +194,19 @@ The `sitecore-classic` skill provides Claude with knowledge of:
 - Caching configuration
 - Pipeline processor patterns
 - Configuration patching
+
+### Shared Skills
+
+This plugin is enhanced by shared skills that provide additional context for frontend, backend, and fullstack development:
+
+| Skill | Description |
+|-------|-------------|
+| `frontend-classic` | CSS/SASS organization, JavaScript/jQuery patterns, BEM naming |
+| `frontend-razor` | Razor view syntax, layouts, partials, tag helpers |
+| `backend-csharp` | C#/.NET DI patterns, service architecture, async/await |
+| `fullstack-classic` | jQuery AJAX integration, form handling, anti-forgery tokens |
+
+These skills are automatically applied based on the file types you're working with, providing comprehensive development context alongside the Sitecore-specific patterns.
 
 ## Security & Privacy
 

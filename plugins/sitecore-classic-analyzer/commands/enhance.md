@@ -32,14 +32,14 @@ Generate project-specific skills and commands to improve AI-assisted development
 
 | Option | Description |
 |--------|-------------|
-| `--output <path>` | Output directory (default: `.claude/project-skills/`) |
+| `--output <path>` | Output directory (default: `.claude/skills/`) |
 | `--dry-run` | Preview what would be generated without writing files |
 | `--include-examples` | Extract sanitized code examples from codebase |
 
 ## What Gets Generated
 
 ### 1. Project Patterns Skill
-**File**: `.claude/project-skills/project-patterns/SKILL.md`
+**File**: `.claude/skills/project-patterns/SKILL.md`
 
 Detected patterns:
 - Service layer conventions (base classes, interfaces, lifetimes)
@@ -49,7 +49,7 @@ Detected patterns:
 - Configuration patterns (patch file organization, environment configs)
 
 ### 2. Architecture Guide
-**File**: `.claude/project-skills/architecture-guide/SKILL.md`
+**File**: `.claude/skills/architecture-guide/SKILL.md`
 
 Project-specific documentation:
 - Helix layer structure with actual module names
@@ -58,7 +58,7 @@ Project-specific documentation:
 - Serialization configuration and patterns
 
 ### 3. Project Vocabulary
-**File**: `.claude/project-skills/vocabulary.md`
+**File**: `.claude/skills/vocabulary.md`
 
 Domain-specific terms:
 - Business terminology from class/method names
@@ -67,7 +67,7 @@ Domain-specific terms:
 - Sitecore-specific naming conventions
 
 ### 4. Custom Commands
-**File**: `.claude/project-skills/commands/*.md`
+**File**: `.claude/skills/commands/*.md`
 
 Generated based on project configuration:
 - `/project:build` - Build with detected MSBuild configuration
@@ -106,9 +106,9 @@ Generated based on project configuration:
 ## Generated Skills
 | File | Purpose |
 |------|---------|
-| .claude/project-skills/project-patterns/SKILL.md | 15 patterns documented |
-| .claude/project-skills/architecture-guide/SKILL.md | Helix structure guide |
-| .claude/project-skills/vocabulary.md | 42 project terms |
+| .claude/skills/project-patterns/SKILL.md | 15 patterns documented |
+| .claude/skills/architecture-guide/SKILL.md | Helix structure guide |
+| .claude/skills/vocabulary.md | 42 project terms |
 
 ## Generated Commands
 | Command | Description |
@@ -129,7 +129,7 @@ Generated based on project configuration:
 - Command efficiency: +60% (4 custom commands)
 
 ## Next Steps
-1. Review generated files in `.claude/project-skills/`
+1. Review generated files in `.claude/skills/`
 2. Commit to repository for team use
 3. Customize generated skills as needed
 ```

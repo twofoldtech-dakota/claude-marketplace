@@ -7,7 +7,24 @@ globs:
   - "**/*.module.json"
   - "**/code/**/*.cs"
   - "**/sitecore.json"
+  - "**/*.scss"
+  - "**/*.css"
+  - "**/scripts/**/*.js"
+  - "**/js/**/*.js"
 ---
+
+## Bundled Skills
+
+This plugin includes the following additional skills for comprehensive development context:
+
+| Skill | Purpose |
+|-------|---------|
+| `frontend-classic` | CSS/SASS organization, JavaScript/jQuery patterns, BEM naming |
+| `frontend-razor` | Razor view syntax, layouts, partials, tag helpers |
+| `backend-csharp` | C#/.NET DI patterns, service architecture, async/await |
+| `fullstack-classic` | jQuery AJAX integration, form handling, anti-forgery tokens |
+
+These skills are automatically included when you install the Sitecore Classic Analyzer plugin.
 
 # Sitecore 10.x Development Patterns
 

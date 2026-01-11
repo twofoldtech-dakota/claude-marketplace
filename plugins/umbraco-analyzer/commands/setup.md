@@ -157,7 +157,7 @@ Creates enterprise-wide analyzer settings:
     "extractExamples": false,
     "includeInternalNames": false,
     "sanitizeOutput": true,
-    "outputPath": ".claude/project-skills/"
+    "outputPath": ".claude/skills/"
   },
 
   "audit": {

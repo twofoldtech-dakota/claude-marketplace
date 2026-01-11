@@ -7,13 +7,13 @@ Generate project-specific skill files and custom commands based on extracted pat
 **Name**: `skill-generator`
 **Tools**: `Read, Write, Glob`
 **Input**: Pattern data from `pattern-extractor` agent
-**Output**: Skill files in `.claude/project-skills/`
+**Output**: Skill files in `.claude/skills/`
 
 ## Generated Files
 
 ### 1. Project Patterns Skill
 
-**Output**: `.claude/project-skills/project-patterns/SKILL.md`
+**Output**: `.claude/skills/project-patterns/SKILL.md`
 
 **Template**:
 ```markdown
@@ -92,7 +92,7 @@ This project uses the following Composer pattern:
 
 ### 2. Architecture Guide Skill
 
-**Output**: `.claude/project-skills/architecture-guide/SKILL.md`
+**Output**: `.claude/skills/architecture-guide/SKILL.md`
 
 **Template**:
 ```markdown
@@ -183,7 +183,7 @@ Following project convention:
 
 ### 3. Project Vocabulary
 
-**Output**: `.claude/project-skills/vocabulary.md`
+**Output**: `.claude/skills/vocabulary.md`
 
 **Template**:
 ```markdown
@@ -230,7 +230,7 @@ Following project convention:
 
 ### 4. Custom Commands
 
-**Output**: `.claude/project-skills/commands/`
+**Output**: `.claude/skills/commands/`
 
 #### /project:build
 

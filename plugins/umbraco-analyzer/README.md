@@ -68,7 +68,7 @@ Generate project-specific skills and commands for improved AI assistance:
 /umbraco:enhance --include-examples
 ```
 
-**Generated Output** (in `.claude/project-skills/`):
+**Generated Output** (in `.claude/skills/`):
 - `project-patterns/SKILL.md` - Detected Composer, service, and controller patterns
 - `architecture-guide/SKILL.md` - Project structure and adding new features
 - `vocabulary.md` - Domain terms and Umbraco-specific naming
@@ -187,6 +187,21 @@ Initial configuration with `.claudeignore` generation:
 The plugin includes two skills:
 - `umbraco-development`: Core patterns for Composers, services, controllers
 - `umbraco-modern-guide`: v14+ patterns for Lit components, Content Delivery API
+
+### Shared Skills
+
+This plugin is enhanced by shared skills that provide additional context for frontend, backend, and fullstack development:
+
+| Skill | Description |
+|-------|-------------|
+| `frontend-razor` | Razor view syntax, layouts, partials, tag helpers |
+| `frontend-classic` | CSS/SASS organization, JavaScript/jQuery patterns (traditional sites) |
+| `frontend-modern` | React, Vue, TypeScript patterns (headless/decoupled sites) |
+| `backend-csharp` | C#/.NET DI patterns, service architecture, async/await |
+| `fullstack-classic` | jQuery AJAX integration, form handling (traditional) |
+| `fullstack-modern` | REST/GraphQL APIs, Content Delivery API integration (headless) |
+
+These skills are automatically applied based on the file types you're working with. Umbraco supports both traditional Razor-based sites and modern headless architectures, so both classic and modern frontend skills are available.
 
 ## Security & Privacy
 

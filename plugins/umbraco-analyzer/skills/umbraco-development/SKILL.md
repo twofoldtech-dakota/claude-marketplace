@@ -7,7 +7,27 @@ globs:
   - "**/App_Plugins/**/*"
   - "**/Views/**/*.cshtml"
   - "**/appsettings.json"
+  - "**/*.scss"
+  - "**/*.css"
+  - "**/scripts/**/*.js"
+  - "**/*.tsx"
+  - "**/*.jsx"
 ---
+
+## Bundled Skills
+
+This plugin includes the following additional skills for comprehensive development context:
+
+| Skill | Purpose |
+|-------|---------|
+| `frontend-razor` | Razor view syntax, layouts, partials, tag helpers |
+| `frontend-classic` | CSS/SASS organization, JavaScript/jQuery patterns (traditional sites) |
+| `frontend-modern` | React, Vue, TypeScript patterns (headless/decoupled sites) |
+| `backend-csharp` | C#/.NET DI patterns, service architecture, async/await |
+| `fullstack-classic` | jQuery AJAX integration, form handling (traditional) |
+| `fullstack-modern` | REST/GraphQL APIs, Content Delivery API integration (headless) |
+
+These skills are automatically included when you install the Umbraco Analyzer plugin.
 
 # Umbraco Development Patterns
 

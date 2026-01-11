@@ -93,6 +93,21 @@ This appears to be a race condition in the CLI where the marketplace schema pars
 | [xm-cloud-analyzer](./plugins/xm-cloud-analyzer/) | XM Cloud | JSS, Next.js, GraphQL, TypeScript quality |
 | [umbraco-analyzer](./plugins/umbraco-analyzer/) | Umbraco 14-16 | Backoffice (Lit), Content Delivery API, Composers |
 
+## Bundled Skills
+
+Each CMS analyzer plugin includes **bundled skills** that provide frontend, backend, and fullstack context relevant to that platform:
+
+| Skill | Description | Included In |
+|-------|-------------|-------------|
+| `frontend-classic` | CSS/SASS, JavaScript, jQuery patterns | Sitecore Classic, Umbraco |
+| `frontend-modern` | React, Vue, Next.js, TypeScript | XM Cloud, Umbraco |
+| `frontend-razor` | Razor views, layouts, tag helpers | Sitecore Classic, Umbraco |
+| `backend-csharp` | C#/.NET, DI, services, async patterns | Sitecore Classic, Umbraco |
+| `fullstack-classic` | jQuery AJAX + C# integration | Sitecore Classic, Umbraco |
+| `fullstack-modern` | React/GraphQL, SSR/SSG, API routes | XM Cloud, Umbraco |
+
+When you install a CMS analyzer, all relevant skills are included automatically. No additional installation required.
+
 ## Commands Overview
 
 Each plugin provides these main commands:
@@ -239,7 +254,7 @@ Configure organization-wide settings in `.claude/analyzer-config.json`:
 Generate project-specific AI enhancements to improve Claude's understanding of your codebase:
 
 ```bash
-/sitecore-classic:enhance --output .claude/project-skills/
+/sitecore-classic:enhance --output .claude/skills/
 ```
 
 ### What Gets Generated

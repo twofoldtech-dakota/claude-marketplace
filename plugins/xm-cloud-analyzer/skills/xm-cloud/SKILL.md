@@ -7,7 +7,21 @@ globs:
   - "**/*.graphql"
   - "**/src/components/**/*.tsx"
   - "**/package.json"
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/tailwind.config.*"
 ---
+
+## Bundled Skills
+
+This plugin includes the following additional skills for comprehensive development context:
+
+| Skill | Purpose |
+|-------|---------|
+| `frontend-modern` | React/Next.js component patterns, TypeScript, modern CSS |
+| `fullstack-modern` | GraphQL integration, SSR/SSG patterns, API routes |
+
+These skills are automatically included when you install the XM Cloud Analyzer plugin.
 
 # XM Cloud Development Patterns
 
