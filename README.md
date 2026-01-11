@@ -147,11 +147,11 @@ Each CMS platform has fundamentally different architectures and patterns:
 | Aspect | Sitecore 10.x | XM Cloud | Umbraco 14-16 |
 |--------|---------------|----------|---------------|
 | Primary Language | C# | TypeScript/React | C# |
-| Rendering | MVC Controllers | Next.js Components | Razor Views / Headless |
-| Data Access | Content Search, Glass Mapper | GraphQL, Edge | IPublishedContent, Examine |
+| Rendering | Controller/View Renderings | Next.js JSS Components | Razor Views / Headless |
+| Data Access | Content Search, Glass Mapper | GraphQL, Experience Edge | IPublishedContent, Examine |
 | Caching | HTML Cache, Custom Cache | Edge CDN, ISR/SSG | HybridCache, Output Cache |
-| Deployment | IaaS/On-prem | Vercel/Netlify | Azure, Docker, IaaS |
-| Backoffice | SPEAK/Sheer UI | Cloud-hosted | Lit Web Components |
+| Deployment | IaaS/On-prem | Vercel/Netlify/Azure | Azure, Docker, IaaS |
+| Backoffice | Content Editor, Horizon | XM Cloud Pages | Lit Web Components |
 
 Separate analyzers provide focused, accurate analysis for each platform.
 
