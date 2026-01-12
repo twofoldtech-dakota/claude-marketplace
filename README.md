@@ -1,6 +1,6 @@
 # CMS Analyzers Marketplace
 
-Claude Code plugins for analyzing enterprise CMS platforms with actionable reports, severity ratings, and shareable metrics.
+Claude Code plugins for analyzing enterprise CMS platforms with actionable reports, severity ratings, and shareable metrics. Generate project-specific AI enhancements to improve Claude's understanding of your codebase and make you a more efficient developer
 
 ## Why Use This
 
