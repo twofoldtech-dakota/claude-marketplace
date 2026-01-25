@@ -1,0 +1,5 @@
+{
+  "name": "optimizely-cms-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze Optimizely CMS/Content Cloud projects for architecture, security, content modeling, and performance patterns"
+}

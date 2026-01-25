@@ -27,6 +27,20 @@
       "description": "Umbraco 14-16 analyzer for backoffice, Content Delivery API, and architecture",
       "category": "cms",
       "tags": ["umbraco", "dotnet", "aspnet-core", "lit", "typescript"]
+    },
+    {
+      "name": "optimizely-cms-analyzer",
+      "source": "./plugins/optimizely-cms-analyzer",
+      "description": "Optimizely CMS/Content Cloud analyzer for content modeling, .NET patterns, and headless APIs",
+      "category": "cms",
+      "tags": ["optimizely", "episerver", "dotnet", "cms", "content-cloud"]
+    },
+    {
+      "name": "optimizely-experimentation-analyzer",
+      "source": "./plugins/optimizely-experimentation-analyzer",
+      "description": "Optimizely Experimentation analyzer for A/B testing, feature flags, and JavaScript SDK patterns",
+      "category": "experimentation",
+      "tags": ["optimizely", "ab-testing", "feature-flags", "javascript", "experimentation"]
     }
   ]
 }

@@ -1,0 +1,5 @@
+{
+  "name": "optimizely-experimentation-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze Optimizely Experimentation and Web implementations for A/B testing, feature flags, and JavaScript SDK patterns"
+}

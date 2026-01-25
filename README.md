@@ -47,6 +47,16 @@ Choose the plugin for your CMS platform:
 /plugin install umbraco-analyzer@cms-analyzers-marketplace
 ```
 
+**For Optimizely CMS (Content Cloud):**
+```
+/plugin install optimizely-cms-analyzer@cms-analyzers-marketplace
+```
+
+**For Optimizely Experimentation (Feature Flags & A/B Testing):**
+```
+/plugin install optimizely-experimentation-analyzer@cms-analyzers-marketplace
+```
+
 ### Step 3: Run Analysis
 
 **Sitecore 10.x:**
@@ -64,12 +74,24 @@ Choose the plugin for your CMS platform:
 /umbraco:analyze
 ```
 
+**Optimizely CMS:**
+```
+/optimizely-cms:analyze
+```
+
+**Optimizely Experimentation:**
+```
+/optimizely-experimentation:analyze
+```
+
 ### Optional: Generate Project-Specific Enhancements
 
 ```
 /sitecore-classic:enhance
 /xm-cloud:enhance
 /umbraco:enhance
+/optimizely-cms:enhance
+/optimizely-experimentation:enhance
 ```
 
 ### Troubleshooting
@@ -92,6 +114,8 @@ This appears to be a race condition in the CLI where the marketplace schema pars
 | [sitecore-classic-analyzer](./plugins/sitecore-classic-analyzer/) | Sitecore 10.x | Helix compliance, SCS/Unicorn, Solr, C# patterns |
 | [xm-cloud-analyzer](./plugins/xm-cloud-analyzer/) | XM Cloud | JSS, Next.js, GraphQL, TypeScript quality |
 | [umbraco-analyzer](./plugins/umbraco-analyzer/) | Umbraco 14-16 | Backoffice (Lit), Content Delivery API, Composers |
+| [optimizely-cms-analyzer](./plugins/optimizely-cms-analyzer/) | Optimizely CMS 12 | Content types, Content Delivery API, Initialization modules |
+| [optimizely-experimentation-analyzer](./plugins/optimizely-experimentation-analyzer/) | Optimizely Experimentation | Feature flags, A/B testing, Full Stack SDK, Web SDK |
 
 ## Bundled Skills
 
@@ -100,11 +124,15 @@ Each CMS analyzer plugin includes **bundled skills** that provide frontend, back
 | Skill | Description | Included In |
 |-------|-------------|-------------|
 | `frontend-classic` | CSS/SASS, JavaScript, jQuery patterns | Sitecore Classic, Umbraco |
-| `frontend-modern` | React, Vue, Next.js, TypeScript | XM Cloud, Umbraco |
-| `frontend-razor` | Razor views, layouts, tag helpers | Sitecore Classic, Umbraco |
-| `backend-csharp` | C#/.NET, DI, services, async patterns | Sitecore Classic, Umbraco |
+| `frontend-modern` | React, Vue, Next.js, TypeScript | XM Cloud, Umbraco, Optimizely CMS, Optimizely Experimentation |
+| `frontend-razor` | Razor views, layouts, tag helpers | Sitecore Classic, Umbraco, Optimizely CMS |
+| `backend-csharp` | C#/.NET, DI, services, async patterns | Sitecore Classic, Umbraco, Optimizely CMS |
 | `fullstack-classic` | jQuery AJAX + C# integration | Sitecore Classic, Umbraco |
 | `fullstack-modern` | React/GraphQL, SSR/SSG, API routes | XM Cloud, Umbraco |
+| `optimizely-development` | Content types, initialization modules, content API | Optimizely CMS |
+| `optimizely-content-cloud` | Content Delivery API, headless patterns | Optimizely CMS |
+| `optimizely-experimentation` | Full Stack SDK, feature flags, A/B testing | Optimizely Experimentation |
+| `optimizely-web` | Web SDK, snippet-based experimentation | Optimizely Experimentation |
 
 When you install a CMS analyzer, all relevant skills are included automatically. No additional installation required.
 
@@ -140,18 +168,18 @@ By default, analysis reports are saved to `docs/{plugin}-analysis-{date}.md`.
 /sitecore-classic:analyze --no-file
 ```
 
-## Why Three Separate Analyzers?
+## Why Separate Analyzers?
 
-Each CMS platform has fundamentally different architectures and patterns:
+Each platform has fundamentally different architectures and patterns:
 
-| Aspect | Sitecore 10.x | XM Cloud | Umbraco 14-16 |
-|--------|---------------|----------|---------------|
-| Primary Language | C# | TypeScript/React | C# |
-| Rendering | Controller/View Renderings | Next.js JSS Components | Razor Views / Headless |
-| Data Access | Content Search, Glass Mapper | GraphQL, Experience Edge | IPublishedContent, Examine |
-| Caching | HTML Cache, Custom Cache | Edge CDN, ISR/SSG | HybridCache, Output Cache |
-| Deployment | IaaS/On-prem | Vercel/Netlify/Azure | Azure, Docker, IaaS |
-| Backoffice | Content Editor, Horizon | XM Cloud Pages | Lit Web Components |
+| Aspect | Sitecore 10.x | XM Cloud | Umbraco 14-16 | Optimizely CMS | Optimizely Experimentation |
+|--------|---------------|----------|---------------|----------------|---------------------------|
+| Primary Language | C# | TypeScript/React | C# | C# | TypeScript/JavaScript |
+| Rendering | Controller/View Renderings | Next.js JSS Components | Razor Views / Headless | Razor / Content Delivery API | React SDK / Web Snippet |
+| Data Access | Content Search, Glass Mapper | GraphQL, Experience Edge | IPublishedContent, Examine | IContentLoader, ContentReference | Feature Flags, Datafile |
+| Caching | HTML Cache, Custom Cache | Edge CDN, ISR/SSG | HybridCache, Output Cache | Output Cache, CDN | Edge Decision, Datafile Cache |
+| Deployment | IaaS/On-prem | Vercel/Netlify/Azure | Azure, Docker, IaaS | DXP Cloud, Azure | SaaS, CDN |
+| Backoffice | Content Editor, Horizon | XM Cloud Pages | Lit Web Components | Edit Mode, CMS UI | Web App, REST API |
 
 Separate analyzers provide focused, accurate analysis for each platform.
 

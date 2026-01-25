@@ -1,0 +1,152 @@
+# Optimizely CMS Analyzer - Exclusion Patterns
+# This file specifies files and directories to exclude from analysis
+# Copy to your project root as .claudeignore
+
+# ============================================
+# SECRETS AND CREDENTIALS
+# ============================================
+
+# Environment-specific configuration (may contain secrets)
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.*.json
+!appsettings.json
+
+# Legacy configuration files
+connectionStrings.config
+episerver.config
+web.config.transform
+
+# Certificates and keys
+*.pfx
+*.p12
+*.key
+*.pem
+*.cer
+*.crt
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Secrets directories
+secrets/
+.secrets/
+
+# ============================================
+# BUILD OUTPUT
+# ============================================
+
+# .NET build output
+bin/
+obj/
+publish/
+out/
+
+# Node.js
+node_modules/
+
+# Package caches
+packages/
+.nuget/
+
+# ============================================
+# IDE AND TOOLS
+# ============================================
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# JetBrains
+.idea/
+*.DotSettings.user
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ============================================
+# TEST AND COVERAGE
+# ============================================
+
+# Test results
+TestResults/
+test-results/
+coverage/
+*.coverage
+*.coveragexml
+
+# ============================================
+# LOGS AND TEMP
+# ============================================
+
+# Logs
+logs/
+*.log
+App_Data/Logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# ============================================
+# OPTIMIZELY SPECIFIC
+# ============================================
+
+# Optimizely App_Data (contains blobs, index, etc.)
+App_Data/blobs/
+App_Data/Index/
+App_Data/VPP/
+
+# License files (may contain sensitive info)
+*.license
+license.config
+
+# ============================================
+# VERSION CONTROL
+# ============================================
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# ============================================
+# DOCUMENTATION (optional - uncomment if needed)
+# ============================================
+
+# docs/
+# *.md
+# !README.md
+
+# ============================================
+# LARGE FILES
+# ============================================
+
+# Media and assets (if not needed for analysis)
+# wwwroot/media/
+# wwwroot/images/
+
+# ============================================
+# GENERATED CODE
+# ============================================
+
+# Generated TypeScript/JavaScript
+wwwroot/dist/
+wwwroot/js/*.min.js
+
+# Generated CSS
+wwwroot/css/*.min.css
+
+# ModelsBuilder generated files (optional)
+# Models/Generated/
