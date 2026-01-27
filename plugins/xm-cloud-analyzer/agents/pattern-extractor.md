@@ -217,6 +217,150 @@ dataFetchingPatterns:
 }
 ```
 
+### 7. Testing Patterns
+
+**Detection Strategy**:
+```
+1. Identify test framework (Jest, Vitest, Playwright, Cypress)
+2. Find test file organization patterns
+3. Detect mocking strategies
+4. Analyze test naming conventions
+5. Check coverage configuration
+```
+
+**Files to Scan**:
+- `**/*.test.ts`
+- `**/*.test.tsx`
+- `**/*.spec.ts`
+- `**/*.spec.tsx`
+- `**/jest.config.*`
+- `**/vitest.config.*`
+- `**/playwright.config.*`
+- `**/cypress.config.*`
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| Test framework | Config file detection | Jest, Vitest, Playwright |
+| File organization | Co-located vs separate `__tests__` | Test file structure |
+| Mocking approach | `jest.mock`, `vi.mock` patterns | Mock strategies |
+| Test naming | `describe`/`it` naming conventions | BDD vs TDD style |
+| Component testing | `@testing-library/react` usage | React testing patterns |
+| E2E patterns | Playwright/Cypress page objects | E2E organization |
+
+**Output Format**:
+```yaml
+testingPatterns:
+  framework: "Jest"
+  runner: "jest"
+  organization: "co-located"  # or "__tests__" or "tests/"
+  namingConvention: "{ComponentName}.test.tsx"
+  mockingStrategy: "jest.mock with factories"
+  testingLibrary: "@testing-library/react"
+  coverage:
+    enabled: true
+    threshold: 80
+  examples:
+    - name: Hero.test.tsx
+      file: src/components/Hero/Hero.test.tsx
+      pattern: "RTL with userEvent"
+```
+
+### 8. Error Handling Patterns
+
+**Detection Strategy**:
+```
+1. Find error boundary implementations
+2. Detect try-catch patterns
+3. Identify logging strategies
+4. Analyze error response formats
+5. Check error recovery patterns
+```
+
+**Files to Scan**:
+- `**/components/**/*Error*.tsx`
+- `**/components/**/*Boundary*.tsx`
+- `**/lib/**/*.ts`
+- `**/utils/**/*.ts`
+- `**/api/**/*.ts`
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| Error boundaries | `componentDidCatch`, `ErrorBoundary` | React error handling |
+| Try-catch style | Catch block patterns | Error capture approach |
+| Logging service | Logger imports and usage | Logging strategy |
+| Error types | Custom error classes | Domain-specific errors |
+| Recovery UI | Fallback component patterns | User-facing errors |
+| API errors | Error response format | REST/GraphQL error handling |
+
+**Output Format**:
+```yaml
+errorHandlingPatterns:
+  errorBoundary:
+    used: true
+    location: "src/components/ErrorBoundary.tsx"
+    fallbackPattern: "Custom fallback UI"
+  logging:
+    service: "console" | "Sentry" | "DataDog" | "custom"
+    pattern: "Structured logging with context"
+  tryCatch:
+    style: "async/await with try-catch"
+    rethrowPattern: "Wrap in custom error"
+  apiErrors:
+    format: "{ error: string, code: number }"
+    handling: "Error boundary + toast notification"
+  customErrors:
+    - name: "GraphQLError"
+      file: "src/lib/errors.ts"
+    - name: "ValidationError"
+      file: "src/lib/errors.ts"
+```
+
+## Execution
+
+```bash
+# The agent executes these steps:
+
+1. Glob for pattern-specific files
+2. Read and analyze file contents
+3. Extract pattern metadata
+4. Build pattern documentation
+5. Return structured pattern data
+```
+
+## Output Schema
+
+```json
+{
+  "patterns": {
+    "components": [...],
+    "hooks": [...],
+    "dataFetching": [...],
+    "graphql": [...],
+    "styling": [...],
+    "typescript": [...],
+    "testing": [...],
+    "errorHandling": [...]
+  },
+  "statistics": {
+    "totalPatternsFound": 52,
+    "componentsAnalyzed": 24,
+    "hooksAnalyzed": 12,
+    "queriesAnalyzed": 15,
+    "testFilesAnalyzed": 18,
+    "errorPatternsFound": 5
+  },
+  "examples": [
+    {
+      "pattern": "withDatasourceCheck",
+      "file": "src/components/Hero.tsx",
+      "snippet": "..." // Sanitized
+    }
+  ]
+}
+```
+
 ## Privacy
 
 - Skip files matching `.claudeignore`

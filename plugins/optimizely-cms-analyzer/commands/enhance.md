@@ -13,7 +13,19 @@ Generate project-specific AI skills by extracting patterns from your Optimizely 
 ```bash
 /optimizely:enhance                    # Generate skills to .claude/skills/
 /optimizely:enhance --output ./skills  # Custom output path
+/optimizely:enhance --update           # Update existing skills
+/optimizely:enhance --force            # Force regeneration
 ```
+
+## Options
+
+| Option | Description |
+|--------|-------------|
+| `--output <path>` | Output directory (default: `.claude/skills/`) |
+| `--dry-run` | Preview what would be generated without writing files |
+| `--include-examples` | Extract sanitized code examples from codebase |
+| `--update` | Update existing skills instead of regenerating (compares with `.meta.json`) |
+| `--force` | Overwrite existing skills without confirmation |
 
 ## What It Does
 
@@ -50,6 +62,26 @@ Consolidates project-wide conventions:
 - Naming standards
 - File organization
 - Configuration patterns
+
+### Testing Patterns Skill
+Teaches Claude your testing patterns:
+- Test framework and mocking library
+- Content mocking strategies
+- Service and controller test patterns
+- Integration test fixtures
+
+### Error Handling Skill
+Teaches Claude your error handling:
+- Logging framework and patterns
+- Custom exception hierarchy
+- API error responses (ProblemDetails)
+- Resilience patterns (Polly)
+
+### Skill Metadata
+Tracks skill versioning in `.meta.json`:
+- Generation timestamp
+- Project hash for change detection
+- Pattern counts per skill
 
 ## Execution Flow
 
@@ -110,9 +142,34 @@ Re-run enhance when:
 - Conventions updated
 - After significant refactoring
 
+## Skill Versioning
+
+When using `--update`, the command compares the current codebase against `.meta.json`:
+
+```
+1. Read existing .claude/skills/.meta.json
+2. Compute current project hash
+3. Compare patterns:
+   - New patterns → Add to skill
+   - Removed patterns → Mark as deprecated
+   - Changed patterns → Update in place
+4. Preserve custom modifications (marked with <!-- custom -->)
+5. Update .meta.json with new timestamp
+```
+
+### Update Behavior
+
+| Scenario | Action |
+|----------|--------|
+| No existing skills | Full generation |
+| Skills exist, no changes | Skip (report "up to date") |
+| Skills exist, changes detected | Incremental update |
+| `--force` flag | Regenerate all |
+
 ## Notes
 
 - Skills are project-specific and should be committed to version control
-- Existing skills will be overwritten
+- With `--update`, existing skills are incrementally updated
+- With `--force`, existing skills will be overwritten
 - Analysis is read-only (except for skill file output)
 - No code or patterns are transmitted externally

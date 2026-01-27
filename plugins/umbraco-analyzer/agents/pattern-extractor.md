@@ -213,6 +213,147 @@ controllerPatterns:
 }
 ```
 
+### 7. Testing Patterns
+
+**Detection Strategy**:
+```
+1. Identify test framework (xUnit, NUnit, MSTest)
+2. Find test project organization
+3. Detect mocking strategies
+4. Analyze Umbraco-specific test patterns
+5. Check for integration test patterns
+```
+
+**Files to Scan**:
+- `**/*.Tests/**/*.cs`
+- `**/Tests/**/*.cs`
+- `**/*Tests.cs`
+- `**/*Test.cs`
+- `**/*.csproj`
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| Test framework | Package references | xUnit, NUnit |
+| Mocking framework | `Mock<T>`, `Substitute.For<T>` | Moq, NSubstitute |
+| Umbraco mocking | `PublishedContentMock` | Content mocking |
+| Naming convention | Test method names | BDD or AAA style |
+| Integration tests | `UmbracoIntegrationTest` base | Integration patterns |
+| Frontend tests | Jest, Playwright for Lit | Backoffice tests |
+
+**Output Format**:
+```yaml
+testingPatterns:
+  backend:
+    framework: "xUnit"
+    mockingLibrary: "NSubstitute"
+    umbracoMocking: "Umbraco.Cms.Tests.Common"
+    namingConvention: "Should_{Behavior}_When_{Condition}"
+  frontend:
+    framework: "Jest"
+    litTesting: "@open-wc/testing"
+    e2e: "Playwright"
+  organization:
+    structure: "Separate test projects"
+    naming: "{Project}.Tests"
+  examples:
+    - name: NavigationServiceTests
+      file: tests/Services/NavigationServiceTests.cs
+```
+
+### 8. Error Handling Patterns
+
+**Detection Strategy**:
+```
+1. Find exception handling patterns
+2. Identify logging conventions
+3. Detect Umbraco-specific error handling
+4. Analyze notification-based error propagation
+5. Check error response patterns
+```
+
+**Files to Scan**:
+- `**/Exceptions/**/*.cs`
+- `**/*Exception.cs`
+- `**/Handlers/**/*.cs`
+- `**/Middleware/**/*.cs`
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| Logging | `ILogger<T>` usage | Microsoft.Extensions.Logging |
+| Custom exceptions | Exception class definitions | Domain exceptions |
+| Notification errors | `CancelOperation` in handlers | Notification cancellation |
+| Middleware errors | Exception middleware | Global error handling |
+| API errors | `ProblemDetails` usage | RFC 7807 responses |
+| Validation errors | ModelState, FluentValidation | Input validation |
+
+**Output Format**:
+```yaml
+errorHandlingPatterns:
+  logging:
+    framework: "Microsoft.Extensions.Logging"
+    pattern: "ILogger<T> constructor injection"
+    structuredLogging: true
+    sinks: ["Console", "Serilog"]
+  customExceptions:
+    - name: "ContentNotFoundException"
+      file: "Exceptions/ContentNotFoundException.cs"
+  notificationErrors:
+    cancellation: "messages.Add(EventMessage) + e.Cancel = true"
+    pattern: "Validate in handler, cancel on failure"
+  apiErrors:
+    format: "ProblemDetails"
+    middleware: "UseExceptionHandler"
+  validation:
+    library: "FluentValidation"
+    pattern: "Validator per model"
+```
+
+## Execution
+
+```bash
+# The agent executes these steps:
+
+1. Glob for pattern-specific files
+2. Read and analyze file contents
+3. Extract pattern metadata
+4. Build pattern documentation
+5. Return structured pattern data
+```
+
+## Output Schema
+
+```json
+{
+  "patterns": {
+    "composers": [...],
+    "services": [...],
+    "controllers": [...],
+    "notificationHandlers": [...],
+    "propertyConverters": [...],
+    "backofficeExtensions": [...],
+    "testing": [...],
+    "errorHandling": [...]
+  },
+  "statistics": {
+    "totalPatternsFound": 38,
+    "composersAnalyzed": 8,
+    "servicesAnalyzed": 15,
+    "controllersAnalyzed": 10,
+    "testFilesAnalyzed": 20,
+    "errorPatternsFound": 5
+  },
+  "examples": [
+    {
+      "pattern": "IComposer",
+      "file": "Composers/NavigationComposer.cs",
+      "snippet": "..." // Sanitized
+    }
+  ]
+}
+```
+
 ## Privacy
 
 - Skip files matching `.claudeignore`

@@ -206,7 +206,199 @@ Create `{ModuleName}.module.json`:
 {FileNamingConventions}
 ```
 
-### 4. Custom Commands
+### 4. Testing Patterns Skill
+
+**Output**: `.claude/skills/testing-patterns/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: testing-patterns
+description: Testing patterns and conventions for {ProjectName}
+globs:
+  - "**/*.Tests/**/*.cs"
+  - "**/Tests/**/*.cs"
+---
+
+# {ProjectName} - Testing Patterns
+
+## Test Framework
+
+This project uses **{TestFramework}** for testing.
+
+### Mocking Library
+{MockingLibrary}
+
+### Test Project Structure
+{TestProjectStructure}
+
+## Naming Conventions
+
+### Test Classes
+`{TestClassName}Tests`
+
+### Test Methods
+`{MethodName}_{Scenario}_{ExpectedResult}`
+
+## Unit Test Pattern
+
+```csharp
+{UnitTestExample}
+```
+
+## Sitecore-Specific Testing
+
+### FakeDb Usage
+{FakeDbPattern}
+
+### Item Mocking
+```csharp
+{ItemMockExample}
+```
+
+### Service Mocking
+```csharp
+{ServiceMockExample}
+```
+
+## Integration Test Pattern
+
+```csharp
+{IntegrationTestExample}
+```
+
+## Test Fixtures
+
+{FixturePattern}
+
+### Shared Context
+```csharp
+{SharedContextExample}
+```
+
+## Coverage Configuration
+
+{CoverageConfig}
+```
+
+### 5. Error Handling Skill
+
+**Output**: `.claude/skills/error-handling/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: error-handling
+description: Error handling patterns for {ProjectName}
+globs:
+  - "**/Exceptions/**/*.cs"
+  - "**/Logging/**/*.cs"
+---
+
+# {ProjectName} - Error Handling Patterns
+
+## Logging Framework
+
+This project uses **{LoggingFramework}**.
+
+### Pattern
+```csharp
+{LoggingPattern}
+```
+
+## Custom Exceptions
+
+{CustomExceptionList}
+
+### Base Exception
+```csharp
+{BaseExceptionExample}
+```
+
+### Domain Exceptions
+```csharp
+{DomainExceptionExample}
+```
+
+## Pipeline Error Handling
+
+{PipelineErrorPattern}
+
+### Abort Pattern
+```csharp
+{PipelineAbortExample}
+```
+
+## Controller Error Handling
+
+{ControllerErrorPattern}
+
+### Action Filters
+```csharp
+{ActionFilterExample}
+```
+
+## Error Pages
+
+{ErrorPageConfiguration}
+
+## Null Handling
+
+{NullHandlingPattern}
+
+### Guard Clauses
+```csharp
+{GuardClauseExample}
+```
+```
+
+### 6. Skill Metadata
+
+**Output**: `.claude/skills/.meta.json`
+
+**Template**:
+```json
+{
+  "version": "1.0.0",
+  "generatedAt": "{ISO_TIMESTAMP}",
+  "generatedBy": "sitecore-classic-analyzer",
+  "projectHash": "{PROJECT_HASH}",
+  "skills": [
+    {
+      "name": "project-patterns",
+      "file": "project-patterns/SKILL.md",
+      "patternsFound": {PatternCount}
+    },
+    {
+      "name": "architecture-guide",
+      "file": "architecture-guide/SKILL.md",
+      "patternsFound": {ArchPatternCount}
+    },
+    {
+      "name": "testing-patterns",
+      "file": "testing-patterns/SKILL.md",
+      "patternsFound": {TestPatternCount}
+    },
+    {
+      "name": "error-handling",
+      "file": "error-handling/SKILL.md",
+      "patternsFound": {ErrorPatternCount}
+    },
+    {
+      "name": "vocabulary",
+      "file": "vocabulary.md",
+      "termsFound": {TermCount}
+    }
+  ],
+  "statistics": {
+    "filesAnalyzed": {FilesAnalyzed},
+    "patternsExtracted": {TotalPatterns},
+    "commandsGenerated": {CommandCount}
+  }
+}
+```
+
+### 7. Custom Commands
 
 **Output**: `.claude/skills/commands/`
 
@@ -293,7 +485,31 @@ def generate_skills(patterns, project_info):
         domain_terms=extract_domain_terms(patterns)
     )
 
-    # 4. Generate custom commands
+    # 4. Generate testing patterns skill
+    testing_patterns = build_testing_skill(
+        framework=patterns.testing.framework,
+        mockingLibrary=patterns.testing.mockingLibrary,
+        organization=patterns.testing.projectOrganization,
+        fixtures=patterns.testing.fixtures,
+        integrationTests=patterns.testing.integrationTests
+    )
+
+    # 5. Generate error handling skill
+    error_handling = build_error_handling_skill(
+        logging=patterns.errorHandling.logging,
+        customExceptions=patterns.errorHandling.customExceptions,
+        pipelineErrors=patterns.errorHandling.pipelineErrors,
+        nullHandling=patterns.errorHandling.nullHandling
+    )
+
+    # 6. Generate skill metadata
+    metadata = build_skill_metadata(
+        project_info=project_info,
+        patterns=patterns,
+        timestamp=datetime.now().isoformat()
+    )
+
+    # 7. Generate custom commands
     commands = build_custom_commands(
         build_config=project_info.buildConfig,
         serialization=project_info.serialization,
@@ -304,6 +520,9 @@ def generate_skills(patterns, project_info):
         'project_patterns': project_patterns,
         'architecture_guide': architecture_guide,
         'vocabulary': vocabulary,
+        'testing_patterns': testing_patterns,
+        'error_handling': error_handling,
+        'metadata': metadata,
         'commands': commands
     }
 ```

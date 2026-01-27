@@ -248,3 +248,80 @@ Patterns should be cross-referenced with:
 - Analysis findings (issues to avoid)
 - Best practices (patterns to follow)
 - Anti-patterns (patterns to avoid)
+
+### 11. Testing Patterns
+
+Extract testing approaches:
+
+```
+Glob: **/*.Tests/**/*.cs
+Glob: **/Tests/**/*.cs
+Glob: **/*Tests.cs
+Grep: \[Fact\]|\[Theory\]|\[Test\]
+```
+
+**Extract**:
+- Test framework (xUnit, NUnit, MSTest)
+- Mocking strategies (Moq, NSubstitute, FakeItEasy)
+- Optimizely-specific test patterns (ContentReference mocking)
+- Test organization (per project, per feature)
+- Integration test patterns
+
+**Output Format**:
+```yaml
+testingPatterns:
+  framework: "xUnit"
+  mockingLibrary: "Moq"
+  organization: "Separate test project per source project"
+  namingConvention: "{MethodName}_{Scenario}_{ExpectedResult}"
+  optimizelyMocking:
+    - "Mock<IContentLoader>"
+    - "Mock<IContentRepository>"
+    - "InMemoryContentRepository for integration"
+  fixtures:
+    - pattern: "IClassFixture<ServiceProviderFixture>"
+    - purpose: "Shared DI container"
+  coverage:
+    tool: "Coverlet"
+    threshold: 80
+```
+
+### 12. Error Handling Patterns (Extended)
+
+Additional error handling extraction:
+
+```
+Grep: throw new
+Grep: catch\s*\(\w+Exception
+Grep: ILogger.*Error|LogError
+Grep: ProblemDetails
+```
+
+**Extract**:
+- Exception hierarchy (custom exception types)
+- Logging patterns (structured vs unstructured)
+- Error response formats (ProblemDetails, custom)
+- Retry and resilience patterns (Polly)
+- Circuit breaker usage
+
+**Output Format**:
+```yaml
+errorHandlingPatterns:
+  exceptions:
+    base: "ApplicationException or custom base"
+    hierarchy:
+      - "ContentNotFoundException : NotFoundException"
+      - "ValidationException : DomainException"
+  logging:
+    framework: "Serilog"
+    pattern: "Structured with @destructuring"
+    levels: "Error for exceptions, Warning for business rules"
+  apiResponses:
+    format: "ProblemDetails (RFC 7807)"
+    customProperties: ["traceId", "errorCode"]
+  resilience:
+    library: "Polly"
+    patterns:
+      - "Retry with exponential backoff"
+      - "Circuit breaker for external APIs"
+```
