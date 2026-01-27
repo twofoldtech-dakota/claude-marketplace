@@ -33,6 +33,9 @@ By default, the analysis report is written to a markdown file in the `docs/` dir
 | (default) | Write to `docs/xm-cloud-analysis-{date}.md` |
 | `--output <path>` | Custom output path |
 | `--no-file` | Display report only, don't write to file |
+| `--severity <level>` | Filter issues by minimum severity: `critical`, `warning`, or `info` |
+| `--baseline <path>` | Suppress known issues listed in baseline file |
+| `--changes-only` | Only analyze files changed since last commit (git diff)
 
 ### Examples
 
@@ -264,9 +267,66 @@ F: Critical code quality issues
 - CONV-006: Deep relative imports (Info)
 - CONV-007: Interface naming (Info)
 
+## Filtering & Baseline
+
+### Severity Filtering
+
+Use `--severity` to focus on specific issue levels:
+
+```bash
+# Show only critical issues
+/xm-cloud:analyze --severity critical
+
+# Show critical and warnings (skip info)
+/xm-cloud:analyze --severity warning
+```
+
+### Issue Baseline
+
+Use `--baseline` to suppress known/accepted issues:
+
+```bash
+# Use baseline file
+/xm-cloud:analyze --baseline .claude/analyzer-baseline.json
+
+# Generate baseline from current issues
+/xm-cloud:analyze --output .claude/analyzer-baseline.json --baseline-generate
+```
+
+**Baseline file format** (`.claude/analyzer-baseline.json`):
+```json
+{
+  "version": "1.0",
+  "created": "2026-01-27T10:00:00Z",
+  "issues": [
+    {
+      "code": "SEC-004",
+      "location": "src/lib/graphql.ts",
+      "reason": "GraphQL introspection needed for dev tooling",
+      "expires": "2026-06-01"
+    }
+  ]
+}
+```
+
+### Incremental Analysis
+
+Use `--changes-only` for faster CI/CD feedback:
+
+```bash
+# Analyze only changed files
+/xm-cloud:analyze --changes-only
+
+# Combine with severity filter
+/xm-cloud:analyze --changes-only --severity warning
+```
+
+This uses `git diff` to identify changed files and only runs analysis on those files.
+
 ## Notes
 
 - Analysis is read-only and does not modify any files
 - Results based on static analysis; runtime may differ
 - npm audit requires npm to be available
 - Some checks are version-specific (JSS 21 vs 22)
+- `--changes-only` requires git to be available

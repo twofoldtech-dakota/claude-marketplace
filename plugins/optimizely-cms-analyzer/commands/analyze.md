@@ -35,6 +35,9 @@ By default, the analysis report is written to a markdown file in the `docs/` dir
 | `--output <path>` | Custom output path |
 | `--no-file` | Display report only, don't write to file |
 | `--safe-mode` | Analyze structure only, don't read file contents |
+| `--severity <level>` | Filter issues by minimum severity: `critical`, `warning`, or `info` |
+| `--baseline <path>` | Suppress known issues listed in baseline file |
+| `--changes-only` | Only analyze files changed since last commit (git diff)
 
 ### Examples
 
@@ -286,6 +289,62 @@ F: Security vulnerabilities or major incompatibilities
 - EPiServerProfile configuration
 - Classic MVC patterns
 
+## Filtering & Baseline
+
+### Severity Filtering
+
+Use `--severity` to focus on specific issue levels:
+
+```bash
+# Show only critical issues
+/optimizely:analyze --severity critical
+
+# Show critical and warnings (skip info)
+/optimizely:analyze --severity warning
+```
+
+### Issue Baseline
+
+Use `--baseline` to suppress known/accepted issues:
+
+```bash
+# Use baseline file
+/optimizely:analyze --baseline .claude/analyzer-baseline.json
+
+# Generate baseline from current issues
+/optimizely:analyze --output .claude/analyzer-baseline.json --baseline-generate
+```
+
+**Baseline file format** (`.claude/analyzer-baseline.json`):
+```json
+{
+  "version": "1.0",
+  "created": "2026-01-27T10:00:00Z",
+  "issues": [
+    {
+      "code": "CM-001",
+      "location": "src/Models/Pages/LegacyPage.cs",
+      "reason": "Legacy content type, scheduled for migration",
+      "expires": "2026-06-01"
+    }
+  ]
+}
+```
+
+### Incremental Analysis
+
+Use `--changes-only` for faster CI/CD feedback:
+
+```bash
+# Analyze only changed files
+/optimizely:analyze --changes-only
+
+# Combine with severity filter
+/optimizely:analyze --changes-only --severity warning
+```
+
+This uses `git diff` to identify changed files and only runs analysis on those files.
+
 ## Notes
 
 - Analysis is read-only and does not modify any files
@@ -293,3 +352,4 @@ F: Security vulnerabilities or major incompatibilities
 - `dotnet list package --vulnerable` requires .NET CLI
 - Some checks are version-specific
 - Content Cloud projects may have additional cloud-specific recommendations
+- `--changes-only` requires git to be available

@@ -202,6 +202,149 @@ diPatterns:
 }
 ```
 
+### 7. Testing Patterns
+
+**Detection Strategy**:
+```
+1. Identify test framework (xUnit, NUnit, MSTest)
+2. Find test project organization
+3. Detect mocking strategies (Moq, NSubstitute, FakeItEasy)
+4. Analyze test naming conventions
+5. Check for integration test patterns
+```
+
+**Files to Scan**:
+- `**/*.Tests/**/*.cs`
+- `**/Tests/**/*.cs`
+- `**/*Tests.cs`
+- `**/*Test.cs`
+- `**/*.csproj` (for test framework detection)
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| Test framework | Package references | xUnit, NUnit, MSTest |
+| Project organization | Test project structure | Separate project per layer |
+| Mocking framework | `Mock<T>`, `Substitute.For<T>` | Moq, NSubstitute |
+| Naming convention | Test method names | `{Method}_{Scenario}_{Expected}` |
+| Fixture patterns | Test class setup | Constructor injection, `IClassFixture` |
+| Integration tests | Sitecore test runners | `AutoDbData`, `Theory` |
+
+**Output Format**:
+```yaml
+testingPatterns:
+  framework: "xUnit"
+  mockingLibrary: "Moq"
+  projectOrganization: "Mirror src structure"
+  namingConvention: "{MethodName}_When{Condition}_Should{Result}"
+  fixtures:
+    - pattern: "IClassFixture<SitecoreFixture>"
+    - pattern: "AutoDbData for item tests"
+  integrationTests:
+    runner: "Sitecore.FakeDb"
+    patterns:
+      - "Db.GetItem for item access"
+      - "FakeDb for integration scenarios"
+  examples:
+    - name: NavigationServiceTests
+      file: src/Feature/Navigation/tests/NavigationServiceTests.cs
+```
+
+### 8. Error Handling Patterns
+
+**Detection Strategy**:
+```
+1. Find exception handling patterns
+2. Identify logging conventions
+3. Detect Sitecore-specific error handling
+4. Analyze custom exception types
+5. Check error page configurations
+```
+
+**Files to Scan**:
+- `**/Exceptions/**/*.cs`
+- `**/*Exception.cs`
+- `**/Logging/**/*.cs`
+- `**/Pipelines/**/*Processor.cs`
+- `**/App_Config/**/*.config`
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| Logging framework | `ILogger`, `Log4Net`, `Serilog` | Logging approach |
+| Custom exceptions | Exception class definitions | Domain exceptions |
+| Pipeline errors | `args.AbortPipeline()` | Pipeline error handling |
+| Error pages | Error page configuration | Custom error pages |
+| Try-catch patterns | Catch block organization | Exception handling style |
+| Null handling | Null check patterns | Guard clauses, null propagation |
+
+**Output Format**:
+```yaml
+errorHandlingPatterns:
+  logging:
+    framework: "Sitecore.Diagnostics.Log"
+    pattern: "Static Log.Error with exception"
+    structuredLogging: false
+  customExceptions:
+    - name: "ItemNotFoundException"
+      file: "src/Foundation/Exceptions/ItemNotFoundException.cs"
+    - name: "ValidationException"
+      file: "src/Foundation/Exceptions/ValidationException.cs"
+  pipelineErrors:
+    pattern: "args.AbortPipeline() on critical failure"
+    logging: "Log before abort"
+  errorPages:
+    enabled: true
+    location: "/sitecore/content/Errors/500"
+  nullHandling:
+    pattern: "Guard clauses at method entry"
+    nullPropagation: true
+```
+
+## Execution
+
+```bash
+# The agent executes these steps:
+
+1. Glob for pattern-specific files
+2. Read and analyze file contents
+3. Extract pattern metadata
+4. Build pattern documentation
+5. Return structured pattern data
+```
+
+## Output Schema
+
+```json
+{
+  "patterns": {
+    "services": [...],
+    "repositories": [...],
+    "controllers": [...],
+    "pipelines": [...],
+    "configuration": [...],
+    "dependencyInjection": [...],
+    "testing": [...],
+    "errorHandling": [...]
+  },
+  "statistics": {
+    "totalPatternsFound": 45,
+    "servicesAnalyzed": 12,
+    "controllersAnalyzed": 15,
+    "configFilesAnalyzed": 28,
+    "testFilesAnalyzed": 22,
+    "errorPatternsFound": 6
+  },
+  "examples": [
+    {
+      "pattern": "ServiceBase<T>",
+      "file": "src/Feature/Navigation/code/Services/NavigationService.cs",
+      "snippet": "..." // Sanitized
+    }
+  ]
+}
+```
+
 ## Privacy
 
 - Skip files matching `.claudeignore`

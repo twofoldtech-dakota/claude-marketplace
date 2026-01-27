@@ -15,6 +15,8 @@ Generate project-specific skills and commands to improve AI-assisted development
 | `--output <path>` | Output directory (default: `.claude/skills/`) |
 | `--dry-run` | Preview what would be generated without writing files |
 | `--include-examples` | Extract sanitized code examples from codebase |
+| `--update` | Update existing skills instead of regenerating (compares with `.meta.json`) |
+| `--force` | Overwrite existing skills without confirmation |
 
 ## What Gets Generated
 
@@ -46,7 +48,34 @@ Domain-specific terms:
 - Custom hook naming conventions
 - JSS-specific terminology
 
-### 4. Custom Commands
+### 4. Testing Patterns Skill
+**File**: `.claude/skills/testing-patterns/SKILL.md`
+
+Detected patterns:
+- Test framework configuration (Jest, Vitest, Playwright)
+- Component testing patterns (RTL, userEvent)
+- Mocking strategies (modules, APIs, GraphQL)
+- Test file organization and naming
+
+### 5. Error Handling Skill
+**File**: `.claude/skills/error-handling/SKILL.md`
+
+Detected patterns:
+- Error boundary implementations
+- API error handling (GraphQL, REST)
+- Logging service integration
+- Custom error types
+
+### 6. Skill Metadata
+**File**: `.claude/skills/.meta.json`
+
+Tracks skill versioning:
+- Generation timestamp
+- Project hash for change detection
+- Pattern counts per skill
+- Statistics summary
+
+### 7. Custom Commands
 **File**: `.claude/skills/commands/*.md`
 
 Generated based on project configuration:
@@ -120,6 +149,30 @@ Generated based on project configuration:
 - Sanitizes code examples (removes credentials, endpoints)
 - Only analyzes patterns, not business logic details
 
+## Skill Versioning
+
+When using `--update`, the command compares the current codebase against `.meta.json`:
+
+```
+1. Read existing .claude/skills/.meta.json
+2. Compute current project hash
+3. Compare patterns:
+   - New patterns → Add to skill
+   - Removed patterns → Mark as deprecated
+   - Changed patterns → Update in place
+4. Preserve custom modifications (marked with <!-- custom -->)
+5. Update .meta.json with new timestamp
+```
+
+### Update Behavior
+
+| Scenario | Action |
+|----------|--------|
+| No existing skills | Full generation |
+| Skills exist, no changes | Skip (report "up to date") |
+| Skills exist, changes detected | Incremental update |
+| `--force` flag | Regenerate all |
+
 ## Usage Examples
 
 ```bash
@@ -134,4 +187,10 @@ Generated based on project configuration:
 
 # Custom output location
 /xm-cloud:enhance --output ./docs/ai-skills/
+
+# Update existing skills (incremental)
+/xm-cloud:enhance --update
+
+# Force regeneration
+/xm-cloud:enhance --force
 ```

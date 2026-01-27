@@ -34,6 +34,9 @@ By default, the analysis report is written to a markdown file in the `docs/` dir
 | (default) | Write to `docs/umbraco-analysis-{date}.md` |
 | `--output <path>` | Custom output path |
 | `--no-file` | Display report only, don't write to file |
+| `--severity <level>` | Filter issues by minimum severity: `critical`, `warning`, or `info` |
+| `--baseline <path>` | Suppress known issues listed in baseline file |
+| `--changes-only` | Only analyze files changed since last commit (git diff)
 
 ### Examples
 
@@ -260,9 +263,66 @@ F: Legacy code blocking functionality
 - Management API v2
 - Document type inheritance
 
+## Filtering & Baseline
+
+### Severity Filtering
+
+Use `--severity` to focus on specific issue levels:
+
+```bash
+# Show only critical issues
+/umbraco:analyze --severity critical
+
+# Show critical and warnings (skip info)
+/umbraco:analyze --severity warning
+```
+
+### Issue Baseline
+
+Use `--baseline` to suppress known/accepted issues:
+
+```bash
+# Use baseline file
+/umbraco:analyze --baseline .claude/analyzer-baseline.json
+
+# Generate baseline from current issues
+/umbraco:analyze --output .claude/analyzer-baseline.json --baseline-generate
+```
+
+**Baseline file format** (`.claude/analyzer-baseline.json`):
+```json
+{
+  "version": "1.0",
+  "created": "2026-01-27T10:00:00Z",
+  "issues": [
+    {
+      "code": "BO-001",
+      "location": "App_Plugins/legacy-editor/editor.controller.js",
+      "reason": "Third-party plugin, awaiting update",
+      "expires": "2026-06-01"
+    }
+  ]
+}
+```
+
+### Incremental Analysis
+
+Use `--changes-only` for faster CI/CD feedback:
+
+```bash
+# Analyze only changed files
+/umbraco:analyze --changes-only
+
+# Combine with severity filter
+/umbraco:analyze --changes-only --severity warning
+```
+
+This uses `git diff` to identify changed files and only runs analysis on those files.
+
 ## Notes
 
 - Analysis is read-only and does not modify any files
 - Results based on static analysis; runtime may differ
 - `dotnet list package --vulnerable` requires .NET CLI
 - Some checks are version-specific
+- `--changes-only` requires git to be available

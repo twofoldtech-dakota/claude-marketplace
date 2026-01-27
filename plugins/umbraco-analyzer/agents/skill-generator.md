@@ -228,7 +228,187 @@ Following project convention:
 {PropertyAliasConventions}
 ```
 
-### 4. Custom Commands
+### 4. Testing Patterns Skill
+
+**Output**: `.claude/skills/testing-patterns/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: testing-patterns
+description: Testing patterns and conventions for {ProjectName}
+globs:
+  - "**/*.Tests/**/*.cs"
+  - "**/Tests/**/*.cs"
+  - "**/App_Plugins/**/*.test.ts"
+---
+
+# {ProjectName} - Testing Patterns
+
+## Backend Testing
+
+### Test Framework
+This project uses **{TestFramework}** for C# testing.
+
+### Mocking Library
+{MockingLibrary}
+
+### Umbraco Mocking
+```csharp
+{UmbracoMockExample}
+```
+
+### Test Naming
+`{TestNamingConvention}`
+
+### Example Test
+```csharp
+{UnitTestExample}
+```
+
+## Frontend Testing (Backoffice v14+)
+
+### Framework
+{FrontendTestFramework}
+
+### Lit Component Testing
+```typescript
+{LitTestExample}
+```
+
+### E2E Testing
+{E2ETestingSetup}
+
+## Content Mocking
+
+### Published Content Mock
+```csharp
+{PublishedContentMockExample}
+```
+
+### Content Service Mock
+```csharp
+{ContentServiceMockExample}
+```
+
+## Integration Testing
+
+### Test Fixtures
+```csharp
+{IntegrationFixtureExample}
+```
+```
+
+### 5. Error Handling Skill
+
+**Output**: `.claude/skills/error-handling/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: error-handling
+description: Error handling patterns for {ProjectName}
+globs:
+  - "**/Exceptions/**/*.cs"
+  - "**/Middleware/**/*.cs"
+  - "**/Handlers/**/*.cs"
+---
+
+# {ProjectName} - Error Handling Patterns
+
+## Logging
+
+### Framework
+{LoggingFramework}
+
+### Pattern
+```csharp
+{LoggingExample}
+```
+
+## Custom Exceptions
+
+{CustomExceptionList}
+
+### Example
+```csharp
+{CustomExceptionExample}
+```
+
+## Notification Error Handling
+
+### Cancellation Pattern
+```csharp
+{NotificationCancellationExample}
+```
+
+## API Error Responses
+
+### ProblemDetails
+```csharp
+{ProblemDetailsExample}
+```
+
+### Middleware
+```csharp
+{ErrorMiddlewareExample}
+```
+
+## Validation Errors
+
+### FluentValidation
+```csharp
+{FluentValidationExample}
+```
+```
+
+### 6. Skill Metadata
+
+**Output**: `.claude/skills/.meta.json`
+
+**Template**:
+```json
+{
+  "version": "1.0.0",
+  "generatedAt": "{ISO_TIMESTAMP}",
+  "generatedBy": "umbraco-analyzer",
+  "projectHash": "{PROJECT_HASH}",
+  "skills": [
+    {
+      "name": "project-patterns",
+      "file": "project-patterns/SKILL.md",
+      "patternsFound": {PatternCount}
+    },
+    {
+      "name": "architecture-guide",
+      "file": "architecture-guide/SKILL.md",
+      "patternsFound": {ArchPatternCount}
+    },
+    {
+      "name": "testing-patterns",
+      "file": "testing-patterns/SKILL.md",
+      "patternsFound": {TestPatternCount}
+    },
+    {
+      "name": "error-handling",
+      "file": "error-handling/SKILL.md",
+      "patternsFound": {ErrorPatternCount}
+    },
+    {
+      "name": "vocabulary",
+      "file": "vocabulary.md",
+      "termsFound": {TermCount}
+    }
+  ],
+  "statistics": {
+    "filesAnalyzed": {FilesAnalyzed},
+    "patternsExtracted": {TotalPatterns},
+    "commandsGenerated": {CommandCount}
+  }
+}
+```
+
+### 7. Custom Commands
 
 **Output**: `.claude/skills/commands/`
 
@@ -324,7 +504,30 @@ def generate_skills(patterns, project_info):
         domain_terms=extract_domain_terms(patterns)
     )
 
-    # 4. Generate custom commands
+    # 4. Generate testing patterns skill
+    testing_patterns = build_testing_skill(
+        backend=patterns.testing.backend,
+        frontend=patterns.testing.frontend,
+        umbracoMocking=patterns.testing.umbracoMocking,
+        organization=patterns.testing.organization
+    )
+
+    # 5. Generate error handling skill
+    error_handling = build_error_handling_skill(
+        logging=patterns.errorHandling.logging,
+        customExceptions=patterns.errorHandling.customExceptions,
+        notificationErrors=patterns.errorHandling.notificationErrors,
+        apiErrors=patterns.errorHandling.apiErrors
+    )
+
+    # 6. Generate skill metadata
+    metadata = build_skill_metadata(
+        project_info=project_info,
+        patterns=patterns,
+        timestamp=datetime.now().isoformat()
+    )
+
+    # 7. Generate custom commands
     commands = build_custom_commands(
         csproj=project_info.csproj,
         launch_settings=project_info.launchSettings
@@ -334,6 +537,9 @@ def generate_skills(patterns, project_info):
         'project_patterns': project_patterns,
         'architecture_guide': architecture_guide,
         'vocabulary': vocabulary,
+        'testing_patterns': testing_patterns,
+        'error_handling': error_handling,
+        'metadata': metadata,
         'commands': commands
     }
 ```

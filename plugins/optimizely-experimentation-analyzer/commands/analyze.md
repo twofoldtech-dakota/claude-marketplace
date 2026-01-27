@@ -33,6 +33,9 @@ By default, the analysis report is written to a markdown file in the `docs/` dir
 | (default) | Write to `docs/optimizely-exp-analysis-{date}.md` |
 | `--output <path>` | Custom output path |
 | `--no-file` | Display report only, don't write to file |
+| `--severity <level>` | Filter issues by minimum severity: `critical`, `warning`, or `info` |
+| `--baseline <path>` | Suppress known issues listed in baseline file |
+| `--changes-only` | Only analyze files changed since last commit (git diff)
 
 ### Examples
 
@@ -166,8 +169,65 @@ Collect findings from all agents and generate consolidated report.
 - CQ-004: No tests (Warning)
 - CQ-005: Scattered code (Info)
 
+## Filtering & Baseline
+
+### Severity Filtering
+
+Use `--severity` to focus on specific issue levels:
+
+```bash
+# Show only critical issues
+/optimizely-exp:analyze --severity critical
+
+# Show critical and warnings (skip info)
+/optimizely-exp:analyze --severity warning
+```
+
+### Issue Baseline
+
+Use `--baseline` to suppress known/accepted issues:
+
+```bash
+# Use baseline file
+/optimizely-exp:analyze --baseline .claude/analyzer-baseline.json
+
+# Generate baseline from current issues
+/optimizely-exp:analyze --output .claude/analyzer-baseline.json --baseline-generate
+```
+
+**Baseline file format** (`.claude/analyzer-baseline.json`):
+```json
+{
+  "version": "1.0",
+  "created": "2026-01-27T10:00:00Z",
+  "issues": [
+    {
+      "code": "PERF-002",
+      "location": "src/components/Hero.tsx",
+      "reason": "Anti-flicker not needed - SSR prevents flash",
+      "expires": "2026-06-01"
+    }
+  ]
+}
+```
+
+### Incremental Analysis
+
+Use `--changes-only` for faster CI/CD feedback:
+
+```bash
+# Analyze only changed files
+/optimizely-exp:analyze --changes-only
+
+# Combine with severity filter
+/optimizely-exp:analyze --changes-only --severity warning
+```
+
+This uses `git diff` to identify changed files and only runs analysis on those files.
+
 ## Notes
 
 - Analysis is read-only and does not modify any files
 - Results based on static analysis; runtime may differ
 - Some checks are SDK-specific
+- `--changes-only` requires git to be available

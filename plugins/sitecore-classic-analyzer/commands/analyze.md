@@ -33,6 +33,9 @@ By default, the analysis report is written to a markdown file in the `docs/` dir
 | (default) | Write to `docs/sitecore-classic-analysis-{date}.md` |
 | `--output <path>` | Custom output path |
 | `--no-file` | Display report only, don't write to file |
+| `--severity <level>` | Filter issues by minimum severity: `critical`, `warning`, or `info` |
+| `--baseline <path>` | Suppress known issues listed in baseline file |
+| `--changes-only` | Only analyze files changed since last commit (git diff)
 
 ### Examples
 
@@ -255,9 +258,66 @@ F: 3+ Critical
 - CONV-006: Missing standard values (Info)
 - CONV-007: Rendering naming (Info)
 
+## Filtering & Baseline
+
+### Severity Filtering
+
+Use `--severity` to focus on specific issue levels:
+
+```bash
+# Show only critical issues
+/sitecore-classic:analyze --severity critical
+
+# Show critical and warnings (skip info)
+/sitecore-classic:analyze --severity warning
+```
+
+### Issue Baseline
+
+Use `--baseline` to suppress known/accepted issues:
+
+```bash
+# Use baseline file
+/sitecore-classic:analyze --baseline .claude/analyzer-baseline.json
+
+# Generate baseline from current issues
+/sitecore-classic:analyze --output .claude/analyzer-baseline.json --baseline-generate
+```
+
+**Baseline file format** (`.claude/analyzer-baseline.json`):
+```json
+{
+  "version": "1.0",
+  "created": "2026-01-27T10:00:00Z",
+  "issues": [
+    {
+      "code": "ARCH-001",
+      "location": "src/Feature/Navigation/code/Services/NavigationService.cs",
+      "reason": "Legacy code, scheduled for refactoring in Q2",
+      "expires": "2026-06-01"
+    }
+  ]
+}
+```
+
+### Incremental Analysis
+
+Use `--changes-only` for faster CI/CD feedback:
+
+```bash
+# Analyze only changed files
+/sitecore-classic:analyze --changes-only
+
+# Combine with severity filter
+/sitecore-classic:analyze --changes-only --severity warning
+```
+
+This uses `git diff` to identify changed files and only runs analysis on those files.
+
 ## Notes
 
 - Analysis is read-only and does not modify any files
 - Results are based on static analysis; runtime behavior may differ
 - Some checks require access to serialization files to analyze templates
 - Dependency vulnerability check requires `dotnet` CLI to be available
+- `--changes-only` requires git to be available

@@ -264,6 +264,182 @@ Consolidates all project-specific conventions:
 - Configuration patterns
 - Error handling approaches
 
+### 5. Testing Patterns Skill
+
+**File**: `.claude/skills/testing-patterns/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: testing-patterns
+description: Testing patterns for this Optimizely CMS project
+version: 1.0.0
+---
+
+# Testing Patterns
+
+## Overview
+This skill teaches testing patterns used in this Optimizely CMS project.
+
+## Test Framework
+
+This project uses **{TestFramework}** for testing.
+
+### Mocking Library
+{MockingLibrary}
+
+## Content Mocking
+
+### ContentLoader Mock
+```csharp
+{ContentLoaderMockExample}
+```
+
+### ContentReference Setup
+```csharp
+{ContentReferenceMockExample}
+```
+
+## Service Testing
+
+### Unit Test Pattern
+```csharp
+{ServiceTestExample}
+```
+
+## Controller Testing
+
+### Page Controller Test
+```csharp
+{ControllerTestExample}
+```
+
+## Integration Testing
+
+### Test Fixtures
+```csharp
+{IntegrationFixtureExample}
+```
+
+## Conventions
+- {TestConvention1}
+- {TestConvention2}
+
+## Anti-Patterns
+- {TestAntiPattern1}
+```
+
+### 6. Error Handling Skill
+
+**File**: `.claude/skills/error-handling/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: error-handling
+description: Error handling patterns for this Optimizely CMS project
+version: 1.0.0
+---
+
+# Error Handling Patterns
+
+## Overview
+This skill teaches error handling patterns used in this project.
+
+## Logging
+
+### Framework
+{LoggingFramework}
+
+### Pattern
+```csharp
+{LoggingPattern}
+```
+
+### Structured Logging
+```csharp
+{StructuredLoggingExample}
+```
+
+## Custom Exceptions
+
+{CustomExceptionList}
+
+### Exception Hierarchy
+```csharp
+{ExceptionHierarchyExample}
+```
+
+## API Error Responses
+
+### ProblemDetails
+```csharp
+{ProblemDetailsExample}
+```
+
+## Resilience Patterns
+
+### Polly Integration
+```csharp
+{PollyExample}
+```
+
+## Conventions
+- {ErrorConvention1}
+- {ErrorConvention2}
+```
+
+### 7. Skill Metadata
+
+**Output**: `.claude/skills/.meta.json`
+
+**Template**:
+```json
+{
+  "version": "1.0.0",
+  "generatedAt": "{ISO_TIMESTAMP}",
+  "generatedBy": "optimizely-cms-analyzer",
+  "projectHash": "{PROJECT_HASH}",
+  "skills": [
+    {
+      "name": "optimizely-content-types",
+      "file": "optimizely-content-types/SKILL.md",
+      "patternsFound": {ContentTypePatternCount}
+    },
+    {
+      "name": "optimizely-services",
+      "file": "optimizely-services/SKILL.md",
+      "patternsFound": {ServicePatternCount}
+    },
+    {
+      "name": "optimizely-controllers",
+      "file": "optimizely-controllers/SKILL.md",
+      "patternsFound": {ControllerPatternCount}
+    },
+    {
+      "name": "testing-patterns",
+      "file": "testing-patterns/SKILL.md",
+      "patternsFound": {TestPatternCount}
+    },
+    {
+      "name": "error-handling",
+      "file": "error-handling/SKILL.md",
+      "patternsFound": {ErrorPatternCount}
+    },
+    {
+      "name": "project-conventions",
+      "file": "project-conventions/SKILL.md",
+      "patternsFound": {ConventionCount}
+    }
+  ],
+  "statistics": {
+    "filesAnalyzed": {FilesAnalyzed},
+    "patternsExtracted": {TotalPatterns},
+    "codeExamples": {ExampleCount}
+  }
+}
+```
+
 ## Output
 
 After generating skills, provide summary:

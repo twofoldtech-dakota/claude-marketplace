@@ -66,13 +66,109 @@ Extract:
 ```
 Glob: **/*.test.*
 Glob: **/*.spec.*
+Glob: **/jest.config.*
+Glob: **/vitest.config.*
 Grep: mock.*optimizely
+Grep: jest\.mock|vi\.mock
+```
+
+**Detection Strategy**:
+```
+1. Identify test framework (Jest, Vitest, Mocha)
+2. Find Optimizely SDK mocking patterns
+3. Detect experiment/flag test utilities
+4. Analyze variation testing approaches
+5. Check for flicker testing patterns
 ```
 
 Extract:
-- Mocking approaches
-- Test organization
-- Coverage patterns
+- Mocking approaches for Optimizely SDK
+- Test organization (co-located vs separate)
+- Coverage patterns for variations
+- Experiment lifecycle testing
+- Feature flag toggle testing
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| SDK mocking | `jest.mock('@optimizely/optimizely-sdk')` | Full SDK mock |
+| Decision mocking | `mockDecide`, `mockGetVariation` | Decision stubbing |
+| User context | Mock user attributes | Test user setup |
+| Variation testing | Tests per variation | Coverage per variant |
+| Event testing | `track` call verification | Conversion tracking |
+| Loading states | Test loading/ready states | Async handling |
+
+**Output Format**:
+```yaml
+testingPatterns:
+  framework: "Jest"
+  organization: "co-located"
+  sdkMocking:
+    approach: "jest.mock with factory"
+    file: "src/__mocks__/@optimizely/optimizely-sdk.ts"
+  utilities:
+    - name: "mockOptimizelyDecision"
+      purpose: "Stub decide() responses"
+    - name: "renderWithOptimizely"
+      purpose: "Wrap components with provider"
+  coverage:
+    variations: "Each variation tested"
+    loading: "Loading and ready states"
+    errors: "Error boundary integration"
+  examples:
+    - name: FeatureFlag.test.tsx
+      pattern: "Mock SDK, test all variations"
+```
+
+### 6. Error Handling Patterns
+
+```
+Glob: **/lib/**/*.ts
+Glob: **/utils/**/*.ts
+Glob: **/hooks/**/*.ts
+Grep: catch\s*\(
+Grep: \.onError|onError:
+Grep: console\.(error|warn)
+```
+
+**Detection Strategy**:
+```
+1. Find SDK initialization error handling
+2. Detect decision error fallbacks
+3. Identify logging patterns
+4. Analyze graceful degradation approaches
+5. Check error boundary usage
+```
+
+**Patterns to Extract**:
+| Pattern | Detection | Example |
+|---------|-----------|---------|
+| SDK errors | `onError` callback | Initialization failures |
+| Decision fallbacks | Default values on error | Graceful degradation |
+| Logging | Logger setup and usage | Error reporting |
+| Error boundaries | React error boundaries | UI error handling |
+| Retry logic | Retry on datafile fetch | Resilience patterns |
+| Monitoring | Error tracking integration | Sentry, DataDog |
+
+**Output Format**:
+```yaml
+errorHandlingPatterns:
+  sdkInitialization:
+    onError: "Log and use defaults"
+    fallback: "Control variation"
+  decisions:
+    errorHandling: "Return control with logging"
+    defaultValues: "Defined per feature"
+  logging:
+    service: "DataDog" | "Sentry" | "console"
+    pattern: "Structured with context"
+  gracefulDegradation:
+    strategy: "Feature flags default to off"
+    userExperience: "No visible errors"
+  monitoring:
+    integration: "Sentry.captureException"
+    customTags: ["experiment_key", "variation"]
+```
 
 ## Output Format
 

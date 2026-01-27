@@ -242,7 +242,188 @@ touch src/graphql/queries/{QueryName}.graphql
 {FileNamingConventions}
 ```
 
-### 4. Custom Commands
+### 4. Testing Patterns Skill
+
+**Output**: `.claude/skills/testing-patterns/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: testing-patterns
+description: Testing patterns and conventions for {ProjectName}
+globs:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "**/*.spec.ts"
+  - "**/*.spec.tsx"
+---
+
+# {ProjectName} - Testing Patterns
+
+## Test Framework
+
+This project uses **{TestFramework}** for testing.
+
+### Configuration
+- Config file: `{ConfigFile}`
+- Test runner: `{TestRunner}`
+
+## File Organization
+
+{TestOrganization}
+
+### Naming Convention
+- Test files: `{TestFileNaming}`
+- Test suites: `{TestSuiteNaming}`
+- Test cases: `{TestCaseNaming}`
+
+## Component Testing
+
+### Testing Library
+{TestingLibraryUsed}
+
+### Render Pattern
+```tsx
+{ComponentTestExample}
+```
+
+### User Interaction
+```tsx
+{UserEventExample}
+```
+
+## Mocking Patterns
+
+### Module Mocking
+```tsx
+{ModuleMockExample}
+```
+
+### API Mocking
+```tsx
+{APIMockExample}
+```
+
+## GraphQL Testing
+
+### Query Mocking
+```tsx
+{GraphQLMockExample}
+```
+
+## Coverage Configuration
+
+{CoverageConfig}
+
+### Thresholds
+{CoverageThresholds}
+```
+
+### 5. Error Handling Skill
+
+**Output**: `.claude/skills/error-handling/SKILL.md`
+
+**Template**:
+```markdown
+---
+name: error-handling
+description: Error handling patterns for {ProjectName}
+globs:
+  - "**/components/**/*Error*.tsx"
+  - "**/lib/**/*.ts"
+  - "**/utils/**/*.ts"
+---
+
+# {ProjectName} - Error Handling Patterns
+
+## Error Boundaries
+
+{ErrorBoundaryPattern}
+
+### Implementation
+```tsx
+{ErrorBoundaryExample}
+```
+
+### Usage
+```tsx
+{ErrorBoundaryUsage}
+```
+
+## API Error Handling
+
+### GraphQL Errors
+{GraphQLErrorPattern}
+
+### REST API Errors
+{RESTErrorPattern}
+
+## Logging
+
+### Service
+{LoggingService}
+
+### Pattern
+```tsx
+{LoggingExample}
+```
+
+## Custom Error Types
+
+{CustomErrorTypes}
+
+## User-Facing Errors
+
+{UserFacingErrorPattern}
+```
+
+### 6. Skill Metadata
+
+**Output**: `.claude/skills/.meta.json`
+
+**Template**:
+```json
+{
+  "version": "1.0.0",
+  "generatedAt": "{ISO_TIMESTAMP}",
+  "generatedBy": "xm-cloud-analyzer",
+  "projectHash": "{PROJECT_HASH}",
+  "skills": [
+    {
+      "name": "project-patterns",
+      "file": "project-patterns/SKILL.md",
+      "patternsFound": {PatternCount}
+    },
+    {
+      "name": "architecture-guide",
+      "file": "architecture-guide/SKILL.md",
+      "patternsFound": {ArchPatternCount}
+    },
+    {
+      "name": "testing-patterns",
+      "file": "testing-patterns/SKILL.md",
+      "patternsFound": {TestPatternCount}
+    },
+    {
+      "name": "error-handling",
+      "file": "error-handling/SKILL.md",
+      "patternsFound": {ErrorPatternCount}
+    },
+    {
+      "name": "vocabulary",
+      "file": "vocabulary.md",
+      "termsFound": {TermCount}
+    }
+  ],
+  "statistics": {
+    "filesAnalyzed": {FilesAnalyzed},
+    "patternsExtracted": {TotalPatterns},
+    "commandsGenerated": {CommandCount}
+  }
+}
+```
+
+### 7. Custom Commands
 
 **Output**: `.claude/skills/commands/`
 
@@ -335,7 +516,30 @@ def generate_skills(patterns, project_info):
         domain_terms=extract_domain_terms(patterns)
     )
 
-    # 4. Generate custom commands
+    # 4. Generate testing patterns skill
+    testing_patterns = build_testing_skill(
+        framework=patterns.testing.framework,
+        organization=patterns.testing.organization,
+        mocking=patterns.testing.mockingStrategy,
+        coverage=patterns.testing.coverage
+    )
+
+    # 5. Generate error handling skill
+    error_handling = build_error_handling_skill(
+        boundaries=patterns.errorHandling.errorBoundary,
+        logging=patterns.errorHandling.logging,
+        customErrors=patterns.errorHandling.customErrors,
+        apiErrors=patterns.errorHandling.apiErrors
+    )
+
+    # 6. Generate skill metadata
+    metadata = build_skill_metadata(
+        project_info=project_info,
+        patterns=patterns,
+        timestamp=datetime.now().isoformat()
+    )
+
+    # 7. Generate custom commands
     commands = build_custom_commands(
         package_json=project_info.packageJson,
         deployment=project_info.deployment
@@ -345,6 +549,9 @@ def generate_skills(patterns, project_info):
         'project_patterns': project_patterns,
         'architecture_guide': architecture_guide,
         'vocabulary': vocabulary,
+        'testing_patterns': testing_patterns,
+        'error_handling': error_handling,
+        'metadata': metadata,
         'commands': commands
     }
 ```

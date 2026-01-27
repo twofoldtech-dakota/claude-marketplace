@@ -1,0 +1,23 @@
+{
+  "$schema": "https://claude-marketplace.dev/schemas/analyzer-baseline.json",
+  "version": "1.0",
+  "created": "{TIMESTAMP}",
+  "analyzer": "sitecore-classic-analyzer",
+  "description": "Baseline of known/accepted issues to suppress in analysis reports",
+  "issues": [
+    {
+      "code": "EXAMPLE-001",
+      "location": "src/Feature/Example/code/Services/ExampleService.cs",
+      "reason": "Explain why this issue is accepted",
+      "expires": "2026-12-31",
+      "addedBy": "developer@example.com",
+      "addedAt": "{TIMESTAMP}"
+    }
+  ],
+  "notes": [
+    "Issues in this baseline will not appear in analysis reports",
+    "Use --baseline-generate to create a baseline from current issues",
+    "Review and update this file periodically to remove stale entries",
+    "Set 'expires' to automatically surface issues after a date"
+  ]
+}
