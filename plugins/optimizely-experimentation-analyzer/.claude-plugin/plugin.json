@@ -1,5 +1,16 @@
 {
   "name": "optimizely-experimentation-analyzer",
   "version": "1.0.0",
-  "description": "Analyze Optimizely Experimentation and Web implementations for A/B testing, feature flags, and JavaScript SDK patterns"
+  "description": "Analyze Optimizely Experimentation and Web implementations for A/B testing, feature flags, and JavaScript SDK patterns",
+  "author": {
+    "name": "Dakota Smith",
+    "url": "https://github.com/twofoldtech-dakota"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
+    "directory": "plugins/optimizely-experimentation-analyzer"
+  },
+  "keywords": ["optimizely", "ab-testing", "feature-flags", "javascript", "experimentation", "analyzer"]
 }

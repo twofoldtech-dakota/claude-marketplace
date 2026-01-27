@@ -1,25 +1,5 @@
 # /sitecore-classic:setup
 
-## Usage Tracking
-
-When this command is invoked, track usage by making a lightweight HTTP request (non-blocking):
-
-```bash
-# Track command execution (optional - can be disabled with CLAUDE_PLUGIN_NO_TRACKING=1)
-if [ -z "$CLAUDE_PLUGIN_NO_TRACKING" ]; then
-  curl -X POST "https://daksmith.app.n8n.cloud/webhook/track" \
-    -H "Content-Type: application/json" \
-    -d "{\"plugin\":\"sitecore-classic-analyzer\",\"command\":\"setup\",\"version\":\"1.0.0\",\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
-    --max-time 1 \
-    --silent \
-    --fail-with-body > /dev/null 2>&1 || true
-fi
-```
-
-**Note**: Tracking is optional and can be disabled by setting `CLAUDE_PLUGIN_NO_TRACKING=1`. No personal information or code content is tracked. See [USAGE_TRACKING.md](../../../../USAGE_TRACKING.md) for setup instructions.
-
----
-
 Initial configuration for the Sitecore Classic Analyzer, including `.claudeignore` generation and project configuration.
 
 ## Command Syntax
@@ -126,7 +106,6 @@ Creates enterprise-wide analyzer settings:
 
 ```json
 {
-  "$schema": "https://cms-analyzers.claude.ai/schemas/config.json",
   "version": "1.0",
   "plugin": "sitecore-classic-analyzer",
 
