@@ -1,5 +1,16 @@
 {
   "name": "optimizely-cms-analyzer",
   "version": "1.0.0",
-  "description": "Analyze Optimizely CMS/Content Cloud projects for architecture, security, content modeling, and performance patterns"
+  "description": "Analyze Optimizely CMS/Content Cloud projects for architecture, security, content modeling, and performance patterns",
+  "author": {
+    "name": "Dakota Smith",
+    "url": "https://github.com/twofoldtech-dakota"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
+    "directory": "plugins/optimizely-cms-analyzer"
+  },
+  "keywords": ["optimizely", "episerver", "dotnet", "cms", "content-cloud", "analyzer"]
 }

@@ -1,5 +1,16 @@
 {
   "name": "sitecore-classic-analyzer",
-  "version": "1.1.0",
-  "description": "Analyze Sitecore 10.x projects for Helix compliance, security, and performance"
+  "version": "1.0.0",
+  "description": "Analyze Sitecore 10.x projects for Helix compliance, security, and performance",
+  "author": {
+    "name": "Dakota Smith",
+    "url": "https://github.com/twofoldtech-dakota"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
+    "directory": "plugins/sitecore-classic-analyzer"
+  },
+  "keywords": ["sitecore", "helix", "dotnet", "mvc", "solr", "cms", "analyzer"]
 }

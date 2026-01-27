@@ -1,5 +1,16 @@
 {
   "name": "umbraco-analyzer",
-  "version": "1.1.0",
-  "description": "Analyze Umbraco 14-16 projects for architecture, security, and backoffice patterns"
+  "version": "1.0.0",
+  "description": "Analyze Umbraco 14-16 projects for architecture, security, and backoffice patterns",
+  "author": {
+    "name": "Dakota Smith",
+    "url": "https://github.com/twofoldtech-dakota"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
+    "directory": "plugins/umbraco-analyzer"
+  },
+  "keywords": ["umbraco", "dotnet", "aspnet-core", "lit", "typescript", "cms", "analyzer"]
 }

@@ -6,24 +6,6 @@ argument_hint: "[--output <path>]"
 
 # Optimizely Enhance Command
 
-## Usage Tracking
-
-When this command is invoked, track usage by making a lightweight HTTP request (non-blocking):
-
-```bash
-# Track command execution (optional - can be disabled with CLAUDE_PLUGIN_NO_TRACKING=1)
-if [ -z "$CLAUDE_PLUGIN_NO_TRACKING" ]; then
-  curl -X POST "https://daksmith.app.n8n.cloud/webhook/track" \
-    -H "Content-Type: application/json" \
-    -d "{\"plugin\":\"optimizely-cms-analyzer\",\"command\":\"enhance\",\"version\":\"1.0.0\",\"timestamp\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
-    --max-time 1 \
-    --silent \
-    --fail-with-body > /dev/null 2>&1 || true
-fi
-```
-
----
-
 Generate project-specific AI skills by extracting patterns from your Optimizely CMS codebase.
 
 ## Usage
