@@ -1,5 +1,5 @@
 {
-  "name": "optimizely-analyzer",
+  "name": "optimizely",
   "version": "1.0.0",
   "description": "Analyze Optimizely CMS/Content Cloud projects for architecture, security, content modeling, and performance patterns",
   "author": {
@@ -8,6 +8,5 @@
   },
   "license": "MIT",
   "repository": "https://github.com/twofoldtech-dakota/claude-marketplace/tree/main/plugins/optimizely-cms-analyzer",
-  "commandPrefix": "optimizely",
   "keywords": ["optimizely", "episerver", "dotnet", "cms", "content-cloud", "analyzer"]
 }
