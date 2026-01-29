@@ -8,5 +8,6 @@
   },
   "license": "MIT",
   "repository": "https://github.com/twofoldtech-dakota/claude-marketplace/tree/main/plugins/optimizely-cms-analyzer",
+  "commandPrefix": "optimizely",
   "keywords": ["optimizely", "episerver", "dotnet", "cms", "content-cloud", "analyzer"]
 }
