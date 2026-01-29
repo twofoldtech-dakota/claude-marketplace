@@ -7,10 +7,6 @@
     "url": "https://github.com/twofoldtech-dakota"
   },
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
-    "directory": "plugins/optimizely-cms-analyzer"
-  },
+  "repository": "https://github.com/twofoldtech-dakota/claude-marketplace/tree/main/plugins/optimizely-cms-analyzer",
   "keywords": ["optimizely", "episerver", "dotnet", "cms", "content-cloud", "analyzer"]
 }
