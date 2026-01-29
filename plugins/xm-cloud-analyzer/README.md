@@ -24,7 +24,7 @@ Analyze Sitecore XM Cloud projects for JSS patterns, GraphQL efficiency, and Nex
 
 ```
 /plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
-/plugin install xm-cloud-analyzer@cms-analyzers-marketplace
+/plugin install xm-cloud@cms-analyzers-marketplace
 ```
 
 ## Commands

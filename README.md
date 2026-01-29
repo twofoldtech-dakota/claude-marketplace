@@ -231,7 +231,7 @@ These skills are automatically active when you install an analyzer.
 
 ```bash
 # 1. Install the plugin (no analysis yet)
-/plugin install sitecore-classic-analyzer@cms-analyzers-marketplace
+/plugin install sitecore-classic@cms-analyzers-marketplace
 
 # 2. Generate exclusion patterns for your project
 /sitecore-classic:setup --generate-ignore
@@ -349,8 +349,8 @@ For large codebases (1000+ files), initial analysis may take longer. Subsequent 
 Install multiple analyzers — they don't conflict:
 
 ```
-/plugin install sitecore-classic-analyzer@cms-analyzers-marketplace
-/plugin install umbraco-analyzer@cms-analyzers-marketplace
+/plugin install sitecore-classic@cms-analyzers-marketplace
+/plugin install umbraco@cms-analyzers-marketplace
 ```
 
 ---

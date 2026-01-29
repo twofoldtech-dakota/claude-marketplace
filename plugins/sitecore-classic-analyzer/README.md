@@ -24,7 +24,7 @@ Analyze Sitecore 10.x projects for Helix compliance, security vulnerabilities, a
 
 ```
 /plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
-/plugin install sitecore-classic-analyzer@cms-analyzers-marketplace
+/plugin install sitecore-classic@cms-analyzers-marketplace
 ```
 
 ## Commands

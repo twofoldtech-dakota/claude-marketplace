@@ -2,6 +2,13 @@
 
 Analyze Optimizely Experimentation (Full Stack SDK) and Optimizely Web implementations for A/B testing, feature flags, and JavaScript SDK patterns.
 
+## Installation
+
+```
+/plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
+/plugin install optimizely-exp@cms-analyzers-marketplace
+```
+
 ## Supported Products
 
 | Product | SDK | Use Case |

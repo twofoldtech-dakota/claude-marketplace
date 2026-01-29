@@ -2,6 +2,13 @@
 
 Analyze Optimizely CMS (formerly Episerver) projects for architecture, security, content modeling, and performance patterns.
 
+## Installation
+
+```
+/plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
+/plugin install optimizely@cms-analyzers-marketplace
+```
+
 ## Supported Versions
 
 | Platform | Version | .NET |

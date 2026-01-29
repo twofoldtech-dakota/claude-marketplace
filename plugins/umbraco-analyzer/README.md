@@ -24,7 +24,7 @@ Analyze Umbraco 14-16 projects for architecture, security, backoffice patterns, 
 
 ```
 /plugin marketplace add https://github.com/twofoldtech-dakota/claude-marketplace.git
-/plugin install umbraco-analyzer@cms-analyzers-marketplace
+/plugin install umbraco@cms-analyzers-marketplace
 ```
 
 ## Commands
