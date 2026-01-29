@@ -12,5 +12,6 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/xm-cloud-analyzer"
   },
+  "commandPrefix": "xm-cloud",
   "keywords": ["sitecore", "xm-cloud", "jss", "nextjs", "graphql", "typescript", "cms", "analyzer"]
 }

@@ -12,5 +12,6 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/optimizely-experimentation-analyzer"
   },
+  "commandPrefix": "optimizely-exp",
   "keywords": ["optimizely", "ab-testing", "feature-flags", "javascript", "experimentation", "analyzer"]
 }
