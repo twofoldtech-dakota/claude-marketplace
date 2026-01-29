@@ -1,5 +1,5 @@
 {
-  "name": "optimizely-experimentation-analyzer",
+  "name": "optimizely-exp",
   "version": "1.0.0",
   "description": "Analyze Optimizely Experimentation and Web implementations for A/B testing, feature flags, and JavaScript SDK patterns",
   "author": {
@@ -12,6 +12,5 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/optimizely-experimentation-analyzer"
   },
-  "commandPrefix": "optimizely-exp",
   "keywords": ["optimizely", "ab-testing", "feature-flags", "javascript", "experimentation", "analyzer"]
 }

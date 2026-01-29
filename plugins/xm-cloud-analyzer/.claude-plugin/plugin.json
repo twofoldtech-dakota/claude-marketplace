@@ -1,5 +1,5 @@
 {
-  "name": "xm-cloud-analyzer",
+  "name": "xm-cloud",
   "version": "1.0.0",
   "description": "Analyze XM Cloud projects for JSS patterns, GraphQL efficiency, and Next.js best practices",
   "author": {
@@ -12,6 +12,5 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/xm-cloud-analyzer"
   },
-  "commandPrefix": "xm-cloud",
   "keywords": ["sitecore", "xm-cloud", "jss", "nextjs", "graphql", "typescript", "cms", "analyzer"]
 }

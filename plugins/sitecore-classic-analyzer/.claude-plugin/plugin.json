@@ -1,5 +1,5 @@
 {
-  "name": "sitecore-classic-analyzer",
+  "name": "sitecore-classic",
   "version": "1.0.0",
   "description": "Analyze Sitecore 10.x projects for Helix compliance, security, and performance",
   "author": {
@@ -12,6 +12,5 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/sitecore-classic-analyzer"
   },
-  "commandPrefix": "sitecore-classic",
   "keywords": ["sitecore", "helix", "dotnet", "mvc", "solr", "cms", "analyzer"]
 }

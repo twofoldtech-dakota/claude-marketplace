@@ -1,5 +1,5 @@
 {
-  "name": "umbraco-analyzer",
+  "name": "umbraco",
   "version": "1.0.0",
   "description": "Analyze Umbraco 14-16 projects for architecture, security, and backoffice patterns",
   "author": {
@@ -12,6 +12,5 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/umbraco-analyzer"
   },
-  "commandPrefix": "umbraco",
   "keywords": ["umbraco", "dotnet", "aspnet-core", "lit", "typescript", "cms", "analyzer"]
 }
