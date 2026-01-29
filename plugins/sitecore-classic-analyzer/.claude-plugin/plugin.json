@@ -12,5 +12,6 @@
     "url": "https://github.com/twofoldtech-dakota/claude-marketplace.git",
     "directory": "plugins/sitecore-classic-analyzer"
   },
+  "commandPrefix": "sitecore-classic",
   "keywords": ["sitecore", "helix", "dotnet", "mvc", "solr", "cms", "analyzer"]
 }
