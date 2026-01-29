@@ -54,20 +54,20 @@ Every issue includes **severity**, **exact location**, and **how to fix it**.
 
 | Your CMS | Install Command |
 |----------|-----------------|
-| Sitecore 10.x | `/plugin install sitecore-classic-analyzer@cms-analyzers-marketplace` |
-| Sitecore XM Cloud | `/plugin install xm-cloud-analyzer@cms-analyzers-marketplace` |
-| Umbraco 14-16 | `/plugin install umbraco-analyzer@cms-analyzers-marketplace` |
-| Optimizely CMS | `/plugin install optimizely-cms-analyzer@cms-analyzers-marketplace` |
-| Optimizely Experimentation | `/plugin install optimizely-experimentation-analyzer@cms-analyzers-marketplace` |
+| Sitecore 10.x | `/plugin install sitecore-classic@cms-analyzers-marketplace` |
+| Sitecore XM Cloud | `/plugin install xm-cloud@cms-analyzers-marketplace` |
+| Umbraco 14-16 | `/plugin install umbraco@cms-analyzers-marketplace` |
+| Optimizely CMS | `/plugin install optimizely@cms-analyzers-marketplace` |
+| Optimizely Experimentation | `/plugin install optimizely-exp@cms-analyzers-marketplace` |
 
 ### 3. Run Analysis
 
 ```
-/sitecore-classic:analyze          # Full analysis with report
-/xm-cloud:analyze                  # XM Cloud analysis
-/umbraco:analyze                   # Umbraco analysis
-/optimizely-cms:analyze            # Optimizely CMS analysis
-/optimizely-experimentation:analyze # Experimentation analysis
+/sitecore-classic:analyze   # Full analysis with report
+/xm-cloud:analyze           # XM Cloud analysis
+/umbraco:analyze            # Umbraco analysis
+/optimizely:analyze         # Optimizely CMS analysis
+/optimizely-exp:analyze     # Experimentation analysis
 ```
 
 That's it. You'll get a detailed markdown report with all issues, scores, and recommendations.
