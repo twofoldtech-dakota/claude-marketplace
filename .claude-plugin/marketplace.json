@@ -8,35 +8,35 @@
   },
   "plugins": [
     {
-      "name": "sitecore-classic-analyzer",
+      "name": "sitecore-classic",
       "source": "./plugins/sitecore-classic-analyzer",
       "description": "Sitecore 10.x analyzer for Helix compliance, serialization, and C# patterns",
       "category": "cms",
       "tags": ["sitecore", "helix", "dotnet", "mvc", "solr"]
     },
     {
-      "name": "xm-cloud-analyzer",
+      "name": "xm-cloud",
       "source": "./plugins/xm-cloud-analyzer",
       "description": "XM Cloud analyzer for JSS, Next.js, GraphQL, and headless patterns",
       "category": "cms",
       "tags": ["sitecore", "xm-cloud", "jss", "nextjs", "graphql", "typescript"]
     },
     {
-      "name": "umbraco-analyzer",
+      "name": "umbraco",
       "source": "./plugins/umbraco-analyzer",
       "description": "Umbraco 14-16 analyzer for backoffice, Content Delivery API, and architecture",
       "category": "cms",
       "tags": ["umbraco", "dotnet", "aspnet-core", "lit", "typescript"]
     },
     {
-      "name": "optimizely-cms-analyzer",
+      "name": "optimizely",
       "source": "./plugins/optimizely-cms-analyzer",
       "description": "Optimizely CMS/Content Cloud analyzer for content modeling, .NET patterns, and headless APIs",
       "category": "cms",
       "tags": ["optimizely", "episerver", "dotnet", "cms", "content-cloud"]
     },
     {
-      "name": "optimizely-experimentation-analyzer",
+      "name": "optimizely-exp",
       "source": "./plugins/optimizely-experimentation-analyzer",
       "description": "Optimizely Experimentation analyzer for A/B testing, feature flags, and JavaScript SDK patterns",
       "category": "experimentation",
